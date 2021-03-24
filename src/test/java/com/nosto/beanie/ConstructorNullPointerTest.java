@@ -51,12 +51,13 @@ public class ConstructorNullPointerTest extends AbstractJacksonBeanTest<TestBean
         @Nullable
         private final String bar;
 
-        @SuppressWarnings({"ConditionalExpressionWithIdenticalBranches"})
+        @SuppressWarnings({"ConditionalExpressionWithIdenticalBranches", "ConstantConditions"})
         @JsonCreator
         public TestBean(@Nullable @JsonProperty("bar") String bar) {
             this.bar = bar.isEmpty() ? bar : bar;
         }
 
+        @Nullable
         @SuppressWarnings("unused")
         public String getBar() {
             return bar;

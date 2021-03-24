@@ -7,6 +7,20 @@
  *  accordance with the terms of the agreement you entered into with
  *  Nosto Solutions Ltd.
  */
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyAssignabilityCheck
 
 import net.ltgt.gradle.errorprone.*
 
@@ -204,6 +218,7 @@ publishing {
                     fromResolutionOf('runtimeClasspath')
                 }
                 usage('java-runtime') {
+                    //noinspection GroovyImplicitNullArgumentCall
                     fromResolutionResult()
                 }
             }
@@ -211,13 +226,14 @@ publishing {
             from components.java
 
             pom {
+                //noinspection GroovyAssignabilityCheck
                 name = 'Beanie'
                 description = 'A simple library to sanity-check your bean ser-deser'
                 url = 'https://github.com/nosto/beanie'
                 licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
                 }
                 developers {
@@ -258,4 +274,5 @@ task buildZip(type: Zip) {
     }
 }
 
+//noinspection GrUnresolvedAccess
 build.dependsOn buildZip

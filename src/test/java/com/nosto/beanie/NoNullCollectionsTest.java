@@ -47,7 +47,7 @@ public class NoNullCollectionsTest extends AbstractJacksonBeanTest<NoNullCollect
             this.bars = bars;
         }
 
-        @SuppressWarnings({"ConstantConditions", "NullableProblems"})
+        @SuppressWarnings("unused")
         public List<String> getBars() {
             return bars;
         }

@@ -41,7 +41,7 @@ public class ExcludedMapAndCollectionsAsEmptyRandomizerRegistry implements Rando
     }
 
     @Nullable
-    @SuppressWarnings({"ReturnOfNull", "ReturnOfInnerClass"})
+    @SuppressWarnings({"ReturnOfInnerClass"})
     @Override
     public Randomizer<?> getRandomizer(Field field) {
         if (ReflectionUtils.isCollectionType(field.getType()) && field.isAnnotationPresent(Exclude.class)) {
@@ -64,7 +64,6 @@ public class ExcludedMapAndCollectionsAsEmptyRandomizerRegistry implements Rando
     }
 
     @Nullable
-    @SuppressWarnings({"ReturnOfNull"})
     @Override
     public Randomizer<?> getRandomizer(Class<?> aClass) {
         return null;

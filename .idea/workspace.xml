@@ -7,11 +7,12 @@
     <list default="true" id="9da7df8c-411d-4e5d-9177-d5356b029b03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/AbstractJacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/AbstractJacksonBeanTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/JacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/JacksonBeanTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/BeanieProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/BeanieProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ExcludedMapAndCollectionsAsEmptyRandomizerRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ExcludedMapAndCollectionsAsEmptyRandomizerRegistry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ForceAllNonPrimitivesAsNullRandomizerRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ForceAllNonPrimitivesAsNullRandomizerRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PolymorphicJacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PolymorphicJacksonBeanTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/ConstructorNullPointerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/ConstructorNullPointerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/NoNullCollectionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/NoNullCollectionsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PrimitiveUnboxingGetterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PrimitiveUnboxingGetterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +123,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="run.code.analysis.last.selected.profile" value="pCI" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -133,7 +134,7 @@
       <recent name="com.nosto.beanie" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.beanie [build]">
+  <component name="RunManager" selected="Gradle.beanie [buildZip]">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -208,27 +209,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="beanie [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="compileJava" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="beanie [compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -250,6 +230,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="beanie [publish]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publish" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -262,18 +263,18 @@
     <list>
       <item itemvalue="Gradle.Tests in 'beanie.test'" />
       <item itemvalue="Gradle.beanie [clean]" />
-      <item itemvalue="Gradle.beanie [buildZip]" />
       <item itemvalue="Gradle.beanie [build]" />
-      <item itemvalue="Gradle.beanie [compileJava]" />
       <item itemvalue="Gradle.beanie [compileTestJava]" />
+      <item itemvalue="Gradle.beanie [publish]" />
+      <item itemvalue="Gradle.beanie [buildZip]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.beanie [buildZip]" />
+        <item itemvalue="Gradle.beanie [publish]" />
         <item itemvalue="Gradle.beanie [build]" />
         <item itemvalue="Gradle.beanie [clean]" />
         <item itemvalue="Gradle.beanie [compileTestJava]" />
-        <item itemvalue="Gradle.beanie [compileJava]" />
-        <item itemvalue="Gradle.beanie [buildZip]" />
       </list>
     </recent_temporary>
   </component>
@@ -293,7 +294,7 @@
       <workItem from="1605042223894" duration="309000" />
       <workItem from="1605042545315" duration="1190000" />
       <workItem from="1616509650293" duration="518000" />
-      <workItem from="1616581621835" duration="10171000" />
+      <workItem from="1616581621835" duration="11013000" />
     </task>
     <servers />
   </component>

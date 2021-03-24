@@ -33,7 +33,7 @@ public class ForceAllNonPrimitivesAsNullRandomizerRegistry implements Randomizer
     }
 
     @Nullable
-    @SuppressWarnings({"ReturnOfNull", "ReturnOfInnerClass", "UseOfObsoleteDateTimeApi"})
+    @SuppressWarnings({"ReturnOfInnerClass", "UseOfObsoleteDateTimeApi"})
     @Override
     public Randomizer<?> getRandomizer(Field field) {
         if (field.getType().isPrimitive() || field.getType().isAssignableFrom(java.util.Date.class) || field.isAnnotationPresent(Exclude.class)) {
@@ -50,7 +50,6 @@ public class ForceAllNonPrimitivesAsNullRandomizerRegistry implements Randomizer
     }
 
     @Nullable
-    @SuppressWarnings({"ReturnOfNull"})
     @Override
     public Randomizer<?> getRandomizer(Class<?> aClass) {
         return null;

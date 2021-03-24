@@ -34,6 +34,7 @@ public interface BeanieProvider {
         return getMapper().readValue(json, type);
     }
 
+    @SuppressWarnings({"unused"})
     default BeanDescription getBeanDescription(Class<?> clazz) {
         JavaType javaType = getMapper()
                 .getTypeFactory()
