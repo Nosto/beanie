@@ -7,12 +7,6 @@
     <list default="true" id="9da7df8c-411d-4e5d-9177-d5356b029b03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/BeanieProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/BeanieProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ExcludedMapAndCollectionsAsEmptyRandomizerRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ExcludedMapAndCollectionsAsEmptyRandomizerRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ForceAllNonPrimitivesAsNullRandomizerRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ForceAllNonPrimitivesAsNullRandomizerRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/ConstructorNullPointerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/ConstructorNullPointerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/NoNullCollectionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/NoNullCollectionsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PrimitiveUnboxingGetterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PrimitiveUnboxingGetterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +50,24 @@
                 <item name="beanie" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -134,7 +146,7 @@
       <recent name="com.nosto.beanie" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.beanie [buildZip]">
+  <component name="RunManager" selected="Gradle.beanie [spotbugsMain]">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -209,27 +221,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="beanie [compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="compileTestJava" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="beanie [publish]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -251,30 +242,42 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <option name="AUTO_RESTART" value="false" />
+    <configuration name="beanie [spotbugsMain]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="spotbugsMain" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Gradle.Tests in 'beanie.test'" />
       <item itemvalue="Gradle.beanie [clean]" />
       <item itemvalue="Gradle.beanie [build]" />
-      <item itemvalue="Gradle.beanie [compileTestJava]" />
       <item itemvalue="Gradle.beanie [publish]" />
       <item itemvalue="Gradle.beanie [buildZip]" />
+      <item itemvalue="Gradle.beanie [spotbugsMain]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.beanie [spotbugsMain]" />
+        <item itemvalue="Gradle.beanie [clean]" />
         <item itemvalue="Gradle.beanie [buildZip]" />
         <item itemvalue="Gradle.beanie [publish]" />
         <item itemvalue="Gradle.beanie [build]" />
-        <item itemvalue="Gradle.beanie [clean]" />
-        <item itemvalue="Gradle.beanie [compileTestJava]" />
       </list>
     </recent_temporary>
   </component>
@@ -294,7 +297,9 @@
       <workItem from="1605042223894" duration="309000" />
       <workItem from="1605042545315" duration="1190000" />
       <workItem from="1616509650293" duration="518000" />
-      <workItem from="1616581621835" duration="11013000" />
+      <workItem from="1616581621835" duration="11344000" />
+      <workItem from="1616608063735" duration="1454000" />
+      <workItem from="1616614288912" duration="39000" />
     </task>
     <servers />
   </component>

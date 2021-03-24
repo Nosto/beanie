@@ -8,19 +8,6 @@
  *  Nosto Solutions Ltd.
  */
 //file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
-//file:noinspection GroovyAssignabilityCheck
 
 import net.ltgt.gradle.errorprone.*
 
