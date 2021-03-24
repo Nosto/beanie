@@ -9,6 +9,8 @@
  */
 package com.nosto.beanie;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonCreator;

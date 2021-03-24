@@ -13,6 +13,8 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 import org.jeasy.random.EasyRandomParameters;
 import org.jeasy.random.annotation.Exclude;
 import org.jeasy.random.annotation.Priority;
@@ -30,7 +32,7 @@ import org.jeasy.random.util.ReflectionUtils;
 @Priority(2)
 public class ExcludedMapAndCollectionsAsEmptyRandomizerRegistry implements RandomizerRegistry {
 
-    @SuppressWarnings("FieldCanBeLocal")
+    @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private EasyRandomParameters easyRandomParameters;
 
     @Override
@@ -38,7 +40,8 @@ public class ExcludedMapAndCollectionsAsEmptyRandomizerRegistry implements Rando
         this.easyRandomParameters = easyRandomParameters;
     }
 
-    @SuppressWarnings({"ReturnOfNull", "ReturnOfInnerClass", "ConstantConditions"})
+    @Nullable
+    @SuppressWarnings({"ReturnOfNull", "ReturnOfInnerClass"})
     @Override
     public Randomizer<?> getRandomizer(Field field) {
         if (ReflectionUtils.isCollectionType(field.getType()) && field.isAnnotationPresent(Exclude.class)) {
@@ -60,7 +63,8 @@ public class ExcludedMapAndCollectionsAsEmptyRandomizerRegistry implements Rando
         }
     }
 
-    @SuppressWarnings({"ConstantConditions", "ReturnOfNull"})
+    @Nullable
+    @SuppressWarnings({"ReturnOfNull"})
     @Override
     public Randomizer<?> getRandomizer(Class<?> aClass) {
         return null;

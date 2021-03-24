@@ -40,7 +40,7 @@ apply plugin: "com.dorongold.task-tree"
 apply plugin: "jacoco"
 
 group 'com.nosto'
-version '1.0.0'
+version '1.0.1'
 
 java {
     withJavadocJar()
@@ -168,6 +168,7 @@ jacocoTestReport {
 }
 
 test {
+    useJUnitPlatform()
     testLogging {
         //noinspection GrUnresolvedAccess
         events "passed", "skipped", "failed"
@@ -176,6 +177,7 @@ test {
         junitXml.enabled = true
         html.enabled = true
     }
+    maxParallelForks = (int) (Runtime.runtime.availableProcessors() / 2 + 1)
     finalizedBy jacocoTestReport // report is always generated after tests run
 }
 
@@ -245,3 +247,15 @@ javadoc {
         options.addBooleanOption('html5', true)
     }
 }
+
+// Task for building the zip file for upload
+task buildZip(type: Zip) {
+    archiveBaseName.set(rootProject.name)
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip

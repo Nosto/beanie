@@ -34,6 +34,7 @@ import org.junit.Test;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.introspect.AnnotatedField;
 import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
@@ -41,7 +42,7 @@ import com.nosto.beanie.jeasy.ExcludedMapAndCollectionsAsEmptyRandomizerRegistry
 import com.nosto.beanie.jeasy.ForceAllNonPrimitivesAsNullRandomizerRegistry;
 
 @SuppressWarnings("UseOfObsoleteDateTimeApi")
-public abstract class AbstractJacksonBeanTest<T, U extends T> extends Assert {
+public abstract class AbstractJacksonBeanTest<T, U extends T> {
 
     private static final Random RANDOM = new SecureRandom();
     private static final Supplier<EasyRandomParameters> EASY_RANDOM_PARAMETERS;
@@ -118,9 +119,9 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> extends Assert {
                 .map(BeanPropertyDefinition::getName)
                 .collect(Collectors.groupingBy(name -> {
                     if (name.contains("_") && !name.toLowerCase().equals(name)) {
-                        return PropertyNamingStrategy.SNAKE_CASE;
+                        return PropertyNamingStrategies.SNAKE_CASE;
                     } else {
-                        return PropertyNamingStrategy.LOWER_CAMEL_CASE;
+                        return PropertyNamingStrategies.LOWER_CAMEL_CASE;
                     }
                 }));
         Assert.assertEquals(cases.toString(), 1, cases.size());
