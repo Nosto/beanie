@@ -10,6 +10,7 @@
 
 package com.nosto.beanie;
 
+
 import static org.junit.Assert.assertFalse;
 
 import java.lang.reflect.Modifier;

@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9da7df8c-411d-4e5d-9177-d5356b029b03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/AbstractJacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/AbstractJacksonBeanTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/JacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/JacksonBeanTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PolymorphicJacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PolymorphicJacksonBeanTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +34,11 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$">
-          <activation />
+          <activation>
+            <before_rebuild>
+              <task name="clean" />
+            </before_rebuild>
+          </activation>
         </task>
         <projects_view>
           <tree_state>
@@ -49,36 +57,6 @@
                 <item name="beanie" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="beanie" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="beanie" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="documentation" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="beanie" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="help" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="beanie" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="beanie" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="publishing" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -110,6 +88,9 @@
     <order>
       <scope name="Inspection" />
     </order>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -145,7 +126,7 @@
       <recent name="com.nosto.beanie" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.beanie [spotbugsMain]">
+  <component name="RunManager" selected="Gradle.beanie [build]">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -262,6 +243,16 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="lua.app" factoryName="Lua Application">
+      <option name="program" value="lua" />
+      <option name="file" value="" />
+      <option name="workingDir" value="$PROJECT_DIR$/src/test/java" />
+      <option name="debuggerType" value="2" />
+      <option name="params" value="" />
+      <option name="charset" value="UTF-8" />
+      <option name="showConsole" value="true" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Gradle.Tests in 'beanie.test'" />
       <item itemvalue="Gradle.beanie [clean]" />
@@ -272,11 +263,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.beanie [spotbugsMain]" />
+        <item itemvalue="Gradle.beanie [build]" />
         <item itemvalue="Gradle.beanie [clean]" />
+        <item itemvalue="Gradle.beanie [spotbugsMain]" />
         <item itemvalue="Gradle.beanie [buildZip]" />
         <item itemvalue="Gradle.beanie [publish]" />
-        <item itemvalue="Gradle.beanie [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -298,7 +289,9 @@
       <workItem from="1616509650293" duration="518000" />
       <workItem from="1616581621835" duration="11344000" />
       <workItem from="1616608063735" duration="1454000" />
-      <workItem from="1616614288912" duration="503000" />
+      <workItem from="1616614288912" duration="1533000" />
+      <workItem from="1616655467658" duration="2561000" />
+      <workItem from="1616658826855" duration="385000" />
     </task>
     <servers />
   </component>

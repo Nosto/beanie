@@ -11,6 +11,8 @@ package com.nosto.beanie;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -18,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * @author ollik1
@@ -30,7 +31,7 @@ public class PolymorphicJacksonBeanTest extends AbstractJacksonBeanTest<Polymorp
     }
 
     @Test
-    public void polymorphicDeserialization() throws JsonProcessingException {
+    public void polymorphicDeserialization() throws IOException {
         Base value = getMapper().readValue("{\"type\":\"t1\",\"x\":\"foo\"}", Base.class);
         assertEquals(Concrete1.class, value.getClass());
         assertEquals("foo", value.getX());

@@ -31,7 +31,7 @@ apply plugin: "com.dorongold.task-tree"
 apply plugin: "jacoco"
 
 group 'com.nosto'
-version '1.0.1'
+version '1.0.2'
 
 java {
     withJavadocJar()
@@ -61,16 +61,13 @@ repositories {
 }
 
 dependencies {
-    compile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.2'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.2'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.2'
-    compile group: 'javax.annotation', name: 'jsr305', version: '1.0'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
-    compile group: 'org.reflections', name: 'reflections', version: '0.9.12'
-    compile group: 'org.jeasy', name: 'easy-random-core', version: '4.0.0'
+    implementation group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
+    implementation group: 'javax.annotation', name: 'jsr305', version: '1.0'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
+    implementation group: 'org.reflections', name: 'reflections', version: '0.9.12'
+    implementation group: 'org.jeasy', name: 'easy-random-core', version: '4.0.0'
     errorprone group: 'com.uber.nullaway', name: 'nullaway', version: '0.7.9'
     errorprone group: 'com.google.errorprone', name: 'error_prone_core', version: '2.3.4'
     spotbugsPlugins group: 'com.h3xstream.findsecbugs', name: 'findsecbugs-plugin', version: '1.10.1'
@@ -159,7 +156,7 @@ jacocoTestReport {
 }
 
 test {
-    useJUnitPlatform()
+    //useJUnitPlatform()
     testLogging {
         //noinspection GrUnresolvedAccess
         events "passed", "skipped", "failed"

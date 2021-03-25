@@ -34,7 +34,6 @@ import org.junit.Test;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.introspect.AnnotatedField;
 import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
@@ -119,9 +118,9 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
                 .map(BeanPropertyDefinition::getName)
                 .collect(Collectors.groupingBy(name -> {
                     if (name.contains("_") && !name.toLowerCase().equals(name)) {
-                        return PropertyNamingStrategies.SNAKE_CASE;
+                        return PropertyNamingStrategy.SNAKE_CASE;
                     } else {
-                        return PropertyNamingStrategies.LOWER_CAMEL_CASE;
+                        return PropertyNamingStrategy.LOWER_CAMEL_CASE;
                     }
                 }));
         Assert.assertEquals(cases.toString(), 1, cases.size());
