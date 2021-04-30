@@ -9,3 +9,6 @@
  */
 
 rootProject.name = 'beanie'
+include 'beanie-annotations'
+include 'beanie-core'
+

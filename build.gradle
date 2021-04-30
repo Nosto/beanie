@@ -1,5 +1,6 @@
+import net.ltgt.gradle.errorprone.CheckSeverity
+
 //file:noinspection GrUnresolvedAccess
-import net.ltgt.gradle.errorprone.*
 
 buildscript {
     buildscript {
@@ -10,243 +11,246 @@ buildscript {
             jcenter()
         }
         dependencies {
-            classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.8"
-            classpath "net.ltgt.gradle:gradle-nullaway-plugin:0.2"
-            classpath "com.diffplug.spotless:spotless-plugin-gradle:3.23.0"
-            classpath "gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.0.5"
+            classpath "com.diffplug.spotless:spotless-plugin-gradle:5.12.4"
+            classpath "gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.7.1"
+            classpath "net.ltgt.gradle:gradle-errorprone-plugin:2.0.1"
+            classpath "net.ltgt.gradle:gradle-nullaway-plugin:1.1.0"
             classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.5"
         }
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'checkstyle'
-apply plugin: "com.github.spotbugs"
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-apply plugin: 'com.diffplug.gradle.spotless'
-apply plugin: 'net.ltgt.errorprone'
-apply plugin: 'net.ltgt.nullaway'
-apply plugin: "com.dorongold.task-tree"
-apply plugin: "jacoco"
+allprojects { project ->
 
-group 'com.nosto'
-version '1.0.2'
+    apply plugin: 'java'
+    apply plugin: 'checkstyle'
+    apply plugin: "com.github.spotbugs"
+    apply plugin: 'maven-publish'
+    apply plugin: 'com.diffplug.spotless'
+    apply plugin: 'net.ltgt.errorprone'
+    apply plugin: 'net.ltgt.nullaway'
+    apply plugin: "com.dorongold.task-tree"
+    apply plugin: "jacoco"
 
-java {
-    withJavadocJar()
-    withSourcesJar()
-    sourceCompatibility = JavaVersion.VERSION_1_9
-    targetCompatibility = JavaVersion.VERSION_1_9
-}
+    group 'com.nosto'
+    version '1.0.3'
 
-tasks.withType(JavaCompile).configureEach {
-    options.errorprone.nullaway {
-        //noinspection GrUnresolvedAccess
-        severity = CheckSeverity.OFF
-    }
-}
-
-
-repositories {
-    google()
-    mavenCentral()
-    jcenter()
-    maven {
-        url 'https://dl.bintray.com/palantir/releases'
-    }
-    maven {
-        url 'https://maven.onehippo.com/maven2/'
-    }
-}
-
-dependencies {
-    implementation group: 'junit', name: 'junit', version: '4.12'
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
-    implementation group: 'javax.annotation', name: 'jsr305', version: '1.0'
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
-    implementation group: 'org.reflections', name: 'reflections', version: '0.9.12'
-    implementation group: 'org.jeasy', name: 'easy-random-core', version: '4.0.0'
-    errorprone group: 'com.uber.nullaway', name: 'nullaway', version: '0.7.9'
-    errorprone group: 'com.google.errorprone', name: 'error_prone_core', version: '2.3.4'
-    spotbugsPlugins group: 'com.h3xstream.findsecbugs', name: 'findsecbugs-plugin', version: '1.10.1'
-}
-
-// Configuration for the nullaway extension. The rest of the parameters must be
-// specified on the java-compile tasks. The only option that be specified here
-// is the name of the root package to be analysed.
-nullaway {
-    //noinspection GrUnresolvedAccess
-    annotatedPackages.add("com.nosto")
-}
-
-// Configuration for the Spotbugs plugin. It seems that it isn't possible to define
-// the output report formats here and those seem to be defined on the individual
-// task level.
-// I'm not sure why the tool version is defined here and it isn't managed as a
-// dependency.
-spotbugs {
-    //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
-    toolVersion = '4.0.2'
-    //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
-    ignoreFailures = true
-    effort = 'max'
-}
-
-// We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
-spotbugsMain {
-    //noinspection GroovyAssignabilityCheck
-    reports {
-        xml.enabled = true
-    }
-}
-
-// We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
-spotbugsTest {
-    //noinspection GroovyAssignabilityCheck
-    reports {
-        xml.enabled = true
-    }
-}
-
-// Configuration for the Checkstyle plugin. It seems that it isn't possible to define
-// the output report formats here and those seem to be defined on the individual
-// task level.
-// I'm not sure why the tool version is defined here and it isn't managed as a
-// dependency.
-checkstyle {
-    toolVersion "7.6.1"
-    config resources.text.fromFile("config/checkstyle/checkstyle.xml")
-}
-
-// We only need the XML report so that the CI tools can parse it. The HTML isn't needed
-// and must be explicitly disabled
-checkstyleMain {
-    reports {
-        xml.enabled = true
-        html.enabled = false
-    }
-}
-
-// We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
-checkstyleTest {
-    reports {
-        xml.enabled = true
-        html.enabled = false
-    }
-}
-
-// Configuration for the Jacoco plugin. It seems that it isn't possible to define
-// the output report formats here and those seem to be defined on the individual
-// task level.
-// I'm not sure why the tool version is defined here and it isn't managed as a
-// dependency.
-jacoco {
-    toolVersion = "0.8.5"
-}
-
-// We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
-jacocoTestReport {
-    reports {
-        csv.enabled = true
-        xml.enabled = false
-        html.enabled = true
-    }
-}
-
-test {
-    //useJUnitPlatform()
-    testLogging {
-        //noinspection GrUnresolvedAccess
-        events "passed", "skipped", "failed"
-    }
-    reports {
-        junitXml.enabled = true
-        html.enabled = true
-    }
-    maxParallelForks = (int) (Runtime.runtime.availableProcessors() / 2 + 1)
-    finalizedBy jacocoTestReport // report is always generated after tests run
-}
-
-jacocoTestReport {
-    dependsOn test // tests are required to run before generating the report
-}
-
-// For a complete explanation of how this publishing is configured, please
-// refer to the Gradle Docs at:
-// https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:complete_example
-publishing {
     repositories {
+        google()
+        mavenCentral()
+        jcenter()
         maven {
-            name = "github"
-            url = uri("https://maven.pkg.github.com/nosto/beanie")
-            credentials(PasswordCredentials)
+            url 'https://dl.bintray.com/palantir/releases'
+        }
+        maven {
+            url 'https://maven.onehippo.com/maven2/'
         }
     }
-    publications {
+
+    dependencies {
+        testImplementation group: 'junit', name: 'junit', version: '4.12'
+        implementation group: 'javax.annotation', name: 'jsr305', version: '1.0'
+        implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+        compileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '3.1.3'
+        testCompileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '3.1.3'
+        errorprone group: 'com.uber.nullaway', name: 'nullaway', version: '0.7.9'
+        errorprone group: 'com.google.errorprone', name: 'error_prone_core', version: '2.3.4'
+        spotbugsPlugins group: 'com.h3xstream.findsecbugs', name: 'findsecbugs-plugin', version: '1.10.1'
+    }
+
+    java {
+        withJavadocJar()
+        withSourcesJar()
+        sourceCompatibility = JavaVersion.VERSION_1_9
+        targetCompatibility = JavaVersion.VERSION_1_9
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.errorprone.nullaway {
+            //noinspection GrUnresolvedAccess
+            severity = CheckSeverity.OFF
+        }
+    }
+
+
+    // Configuration for the nullaway extension. The rest of the parameters must be
+    // specified on the java-compile tasks. The only option that be specified here
+    // is the name of the root package to be analysed.
+    nullaway {
+        //noinspection GrUnresolvedAccess
+        annotatedPackages.add("com.nosto")
+    }
+
+    // Configuration for the Spotbugs plugin. It seems that it isn't possible to define
+    // the output report formats here and those seem to be defined on the individual
+    // task level.
+    // I'm not sure why the tool version is defined here and it isn't managed as a
+    // dependency.
+    spotbugs {
+        //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
+        toolVersion = '4.0.2'
+        //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
+        ignoreFailures = true
+        effort = 'max'
+    }
+
+
+// We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
+    spotbugsMain {
         //noinspection GroovyAssignabilityCheck
-        mavenJava(MavenPublication) {
-            versionMapping {
-                usage('java-api') {
-                    fromResolutionOf('runtimeClasspath')
-                }
-                usage('java-runtime') {
-                    //noinspection GroovyImplicitNullArgumentCall
-                    fromResolutionResult()
-                }
-            }
-            //noinspection GroovyAssignabilityCheck
-            from components.java
+        reports {
+            xml.enabled = true
+        }
+    }
 
-            pom {
+    // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
+    spotbugsTest {
+        //noinspection GroovyAssignabilityCheck
+        reports {
+            xml.enabled = true
+        }
+    }
+
+    // Configuration for the Checkstyle plugin. It seems that it isn't possible to define
+    // the output report formats here and those seem to be defined on the individual
+    // task level.
+    // I'm not sure why the tool version is defined here and it isn't managed as a
+    // dependency.
+    checkstyle {
+        toolVersion "7.6.1"
+        config rootProject.resources.text.fromFile("config/checkstyle/checkstyle.xml")
+    }
+
+    // We only need the XML report so that the CI tools can parse it. The HTML isn't needed
+    // and must be explicitly disabled
+    checkstyleMain {
+        reports {
+            xml.enabled = true
+            html.enabled = false
+        }
+    }
+
+    // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
+    checkstyleTest {
+        reports {
+            xml.enabled = true
+            html.enabled = false
+        }
+    }
+
+
+    // For a complete explanation of how this publishing is configured, please
+    // refer to the Gradle Docs at:
+    // https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:complete_example
+    publishing {
+        repositories {
+            maven {
+                name = "github"
+                url = uri("https://maven.pkg.github.com/nosto/beanie")
+                credentials(PasswordCredentials)
+            }
+        }
+        publications {
+            //noinspection GroovyAssignabilityCheck
+            mavenJava(MavenPublication) {
+                versionMapping {
+                    usage('java-api') {
+                        fromResolutionOf('runtimeClasspath')
+                    }
+                    usage('java-runtime') {
+                        //noinspection GroovyImplicitNullArgumentCall
+                        fromResolutionResult()
+                    }
+                }
                 //noinspection GroovyAssignabilityCheck
-                name = 'Beanie'
-                description = 'A simple library to sanity-check your bean ser-deser'
-                url = 'https://github.com/nosto/beanie'
-                licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'ollik1'
-                        name = 'Olli Kuonanoja'
-                        email = 'olli@nosto.com'
-                    }
-                    developer {
-                        id = 'mridsng'
-                        name = 'Mridang Agarwalla'
-                        email = 'mridang@nosto.com'
-                    }
-                }
-                scm {
-                    connection = 'scm:git:git://github.com/nosto/beanie.git'
-                    developerConnection = 'scm:git:ssh://github.com/nosto/beanie.git'
+                from components.java
+
+                pom {
+                    //noinspection GroovyAssignabilityCheck
+                    name = 'Beanie'
+                    description = 'A simple library to sanity-check your bean ser-deser'
                     url = 'https://github.com/nosto/beanie'
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'ollik1'
+                            name = 'Olli Kuonanoja'
+                            email = 'olli@nosto.com'
+                        }
+                        developer {
+                            id = 'mridang'
+                            name = 'Mridang Agarwalla'
+                            email = 'mridang@nosto.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:git://github.com/nosto/beanie.git'
+                        developerConnection = 'scm:git:ssh://github.com/nosto/beanie.git'
+                        url = 'https://github.com/nosto/beanie'
+                    }
                 }
             }
         }
     }
-}
 
-javadoc {
-    if (JavaVersion.current().isJava9Compatible()) {
-        options.addBooleanOption('html5', true)
+    // Configuration for the Jacoco plugin. It seems that it isn't possible to define
+    // the output report formats here and those seem to be defined on the individual
+    // task level.
+    // I'm not sure why the tool version is defined here and it isn't managed as a
+    // dependency.
+    jacoco {
+        toolVersion = "0.8.5"
     }
-}
 
-// Task for building the zip file for upload
-task buildZip(type: Zip) {
-    archiveBaseName.set(rootProject.name)
-    from compileJava
-    from processResources
-    into('lib') {
-        from configurations.runtime
+    // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
+    jacocoTestReport {
+        reports {
+            csv.enabled = true
+            xml.enabled = false
+            html.enabled = true
+        }
     }
-}
 
-//noinspection GrUnresolvedAccess
-build.dependsOn buildZip
+    test {
+        //useJUnitPlatform()
+        testLogging {
+            //noinspection GrUnresolvedAccess
+            events "passed", "skipped", "failed"
+        }
+        reports {
+            junitXml.enabled = true
+            html.enabled = true
+        }
+        maxParallelForks = (int) (Runtime.runtime.availableProcessors() / 2 + 1)
+        finalizedBy jacocoTestReport // report is always generated after tests run
+    }
+
+    jacocoTestReport {
+        dependsOn test // tests are required to run before generating the report
+    }
+
+
+    javadoc {
+        if (JavaVersion.current().isJava9Compatible()) {
+            options.addBooleanOption('html5', true)
+        }
+    }
+//
+//// Task for building the zip file for upload
+//    task buildZip(type: Zip) {
+//        archiveBaseName.set(rootProject.name)
+//        from compileJava
+//        from processResources
+//        into('lib') {
+//            from project.configurations.runtime
+//        }
+//    }
+//
+////noinspection GrUnresolvedAccess
+//    build.dependsOn buildZip
+}

@@ -31,8 +31,12 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.plumelib/reflection-util/0.0.2/4eacaf2b925d63d8c4249eb557afc1fce2150474/reflection-util-0.0.2.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.plumelib/require-javadoc/0.1.0/c1b19f0e5cf9bce7a68a5f04ad636f160f80cd6d/require-javadoc-0.1.0.jar" />
         </processorPath>
-        <module name="beanie.test" />
+        <module name="beanie.beanie-core.test" />
         <module name="beanie.main" />
+        <module name="beanie.beanie-annotations.test" />
+        <module name="beanie.beanie-annotations.main" />
+        <module name="beanie.beanie-core.main" />
+        <module name="beanie.test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.9" />

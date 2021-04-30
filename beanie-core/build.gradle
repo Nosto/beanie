@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'com.nosto'
+version '1.0.2'
+
+repositories {
+    google()
+    mavenCentral()
+    jcenter()
+    maven {
+        url 'https://dl.bintray.com/palantir/releases'
+    }
+    maven {
+        url 'https://maven.onehippo.com/maven2/'
+    }
+}
+
+dependencies {
+    implementation project(':beanie-annotations')
+    implementation group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
+    implementation group: 'javax.annotation', name: 'jsr305', version: '1.0'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
+    implementation group: 'org.reflections', name: 'reflections', version: '0.9.12'
+    implementation group: 'org.jeasy', name: 'easy-random-core', version: '4.0.0'
+}

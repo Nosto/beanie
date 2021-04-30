@@ -17,6 +17,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nosto.beanie.ConstructorNullPointerTest.TestBean;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * Test that the test suite catches issues where {@link JsonCreator}
  * property names do not match with the bean property names
@@ -51,6 +53,7 @@ public class ConstructorNullPointerTest extends AbstractJacksonBeanTest<TestBean
         @Nullable
         private final String bar;
 
+        @SuppressFBWarnings({"DB_DUPLICATE_BRANCHES", "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE"})
         @SuppressWarnings({"ConditionalExpressionWithIdenticalBranches", "ConstantConditions"})
         @JsonCreator
         public TestBean(@Nullable @JsonProperty("bar") String bar) {
