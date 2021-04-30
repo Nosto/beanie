@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
 
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
+import org.jeasy.random.api.RandomizerRegistry;
+import org.jeasy.random.randomizers.registry.CustomRandomizerRegistry;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -68,6 +70,10 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
         this.concreteClass = concreteClass;
     }
 
+    protected RandomizerRegistry getRandomizerRegistry() {
+        return new CustomRandomizerRegistry();
+    }
+
     /**
      * Assert all properties have an equivalent
      * {@link com.fasterxml.jackson.annotation.JsonCreator}
@@ -93,6 +99,7 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     public void serde() {
         EasyRandomParameters randomParameters = EASY_RANDOM_PARAMETERS.get();
         randomParameters.randomizerRegistry(new ExcludedMapAndCollectionsAsEmptyRandomizerRegistry());
+        randomParameters.randomizerRegistry(getRandomizerRegistry());
         @SuppressWarnings("UnsecureRandomNumberGeneration")
         EasyRandom easyRandom = new EasyRandom(randomParameters);
         IntStream.range(0, 10)
@@ -135,6 +142,7 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     public void serdeCollection() {
         EasyRandomParameters randomParameters = EASY_RANDOM_PARAMETERS.get();
         randomParameters.randomizerRegistry(new ForceAllNonPrimitivesAsNullRandomizerRegistry());
+        randomParameters.randomizerRegistry(getRandomizerRegistry());
         @SuppressWarnings("UnsecureRandomNumberGeneration")
         EasyRandom easyRandom = new EasyRandom(randomParameters);
         IntStream.range(0, 10)
@@ -160,6 +168,7 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     public void serdeCollectionAsWell() {
         EasyRandomParameters randomParameters = EASY_RANDOM_PARAMETERS.get();
         randomParameters.randomizerRegistry(new ForceAllNonPrimitivesAsNullRandomizerRegistry());
+        randomParameters.randomizerRegistry(getRandomizerRegistry());
         @SuppressWarnings("UnsecureRandomNumberGeneration")
         EasyRandom easyRandom = new EasyRandom(randomParameters);
         IntStream.range(0, 10)
