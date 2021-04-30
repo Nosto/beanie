@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9da7df8c-411d-4e5d-9177-d5356b029b03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/beanie-annotations/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/beanie-core/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/AbstractJacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/main/java/com/nosto/beanie/AbstractJacksonBeanTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/BeanieProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/main/java/com/nosto/beanie/BeanieProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/JacksonBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-annotations/src/main/java/com/nosto/beanie/JacksonBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/JacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/main/java/com/nosto/beanie/JacksonBeanTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/JacksonOnlySerialize.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-annotations/src/main/java/com/nosto/beanie/JacksonOnlySerialize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ExcludedMapAndCollectionsAsEmptyRandomizerRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/main/java/com/nosto/beanie/jeasy/ExcludedMapAndCollectionsAsEmptyRandomizerRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nosto/beanie/jeasy/ForceAllNonPrimitivesAsNullRandomizerRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/main/java/com/nosto/beanie/jeasy/ForceAllNonPrimitivesAsNullRandomizerRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/AbstractTestBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/AbstractTestBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/ConstructorNullPointerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/ConstructorNullPointerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/DefaultBeanieProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/DefaultBeanieProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/InconsistentConstructorParamsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/InconsistentConstructorParamsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/InconsistentPropertyNamesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/InconsistentPropertyNamesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/MixedPropertyNamingStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/MixedPropertyNamingStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/MutabilityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/MutabilityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/NoNullCollectionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/NoNullCollectionsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PolymorphicJacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/PolymorphicJacksonBeanTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/PrimitiveUnboxingGetterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/PrimitiveUnboxingGetterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nosto/beanie/TypeVariableJacksonBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/TypeVariableJacksonBeanTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beanie-annotations/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-annotations/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beanie-core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
