@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9da7df8c-411d-4e5d-9177-d5356b029b03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beanie-annotations/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-annotations/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beanie-core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/DefaultBeanieProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/DefaultBeanieProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
