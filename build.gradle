@@ -151,9 +151,11 @@ allprojects { project ->
             //noinspection GroovyAssignabilityCheck
             mavenJava(MavenPublication) {
                 versionMapping {
+                    //noinspection GroovyAssignabilityCheck
                     usage('java-api') {
                         fromResolutionOf('runtimeClasspath')
                     }
+                    //noinspection GroovyAssignabilityCheck
                     usage('java-runtime') {
                         //noinspection GroovyImplicitNullArgumentCall
                         fromResolutionResult()
