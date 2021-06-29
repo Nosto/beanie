@@ -153,6 +153,7 @@ allprojects { project ->
                 versionMapping {
                     //noinspection GroovyAssignabilityCheck
                     usage('java-api') {
+                        //noinspection GroovyAssignabilityCheck
                         fromResolutionOf('runtimeClasspath')
                     }
                     //noinspection GroovyAssignabilityCheck
