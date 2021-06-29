@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9da7df8c-411d-4e5d-9177-d5356b029b03" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/beanie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/beanie.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beanie-annotations/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-annotations/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beanie-core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/DefaultBeanieProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/beanie-core/src/test/java/com/nosto/beanie/DefaultBeanieProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,48 +58,44 @@
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="sdfg" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="sdfg" type="f1a62948:ProjectNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="sdfg" type="f1a62948:ProjectNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="sdfg" type="f1a62948:ProjectNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build setup" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="sdfg" type="f1a62948:ProjectNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="documentation" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="sdfg" type="f1a62948:ProjectNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="help" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="sdfg" type="f1a62948:ProjectNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="other" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="sdfg" type="f1a62948:ProjectNode" />
+                <item name="beanie" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
+                <item name="publishing" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -176,7 +172,7 @@
       <recent name="com.nosto.beanie" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.beanie">
+  <component name="RunManager" selected="Gradle.beanie [publishToMavenLocal]">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -198,41 +194,19 @@
       <option name="showConsole" value="true" />
       <method v="2" />
     </configuration>
-    <configuration name="ConstructorNullPointerTest|InconsistentConstructorParamsTest|InconsistentPropertyNamesTest|MixedPropertyNamingStrategyTest|MutabilityTest|NoNullCollectionsTest|PolymorphicJacksonBeanTest|PrimitiveUnboxingGetterTest|TypeVariableJacksonBeanTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="/Users/mridang/Nosto/sdfg [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/../sdfg" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.nosto.beanie.ConstructorNullPointerTest&quot; --tests &quot;com.nosto.beanie.InconsistentConstructorParamsTest&quot; --tests &quot;com.nosto.beanie.InconsistentPropertyNamesTest&quot; --tests &quot;com.nosto.beanie.MixedPropertyNamingStrategyTest&quot; --tests &quot;com.nosto.beanie.MutabilityTest&quot; --tests &quot;com.nosto.beanie.NoNullCollectionsTest&quot; --tests &quot;com.nosto.beanie.PolymorphicJacksonBeanTest&quot; --tests &quot;com.nosto.beanie.PrimitiveUnboxingGetterTest&quot; --tests &quot;com.nosto.beanie.TypeVariableJacksonBeanTest&quot;" />
+        <option name="scriptParameters" value="assemble" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
-          <list>
-            <option value=":beanie-core:test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="beanie [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
           <list />
         </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
-          </list>
-        </option>
+        <option name="tasksAndArguments" value="assemble" />
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
@@ -240,20 +214,19 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="beanie [publish]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="beanie [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="assemble" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
-          <list>
-            <option value="publish" />
-          </list>
+          <list />
         </option>
+        <option name="tasksAndArguments" value="assemble" />
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
@@ -261,20 +234,39 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="beanie [spotbugsMain]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="beanie [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="build" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
-          <list>
-            <option value="spotbugsMain" />
-          </list>
+          <list />
         </option>
+        <option name="tasksAndArguments" value="build" />
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="beanie [publishToMavenLocal]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="publishToMavenLocal" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="tasksAndArguments" value="publishToMavenLocal" />
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
@@ -287,13 +279,14 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list />
         </option>
+        <option name="tasksAndArguments" value="" />
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
@@ -303,19 +296,19 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.Tests in 'beanie.test'" />
-      <item itemvalue="Gradle.beanie [publish]" />
-      <item itemvalue="Gradle.beanie [spotbugsMain]" />
-      <item itemvalue="Gradle.ConstructorNullPointerTest|InconsistentConstructorParamsTest|InconsistentPropertyNamesTest|MixedPropertyNamingStrategyTest|MutabilityTest|NoNullCollectionsTest|PolymorphicJacksonBeanTest|PrimitiveUnboxingGetterTest|TypeVariableJacksonBeanTest" />
-      <item itemvalue="Gradle.beanie [jar]" />
       <item itemvalue="Gradle.beanie" />
+      <item itemvalue="Gradle./Users/mridang/Nosto/sdfg [assemble]" />
+      <item itemvalue="Gradle.beanie [build]" />
+      <item itemvalue="Gradle.beanie [assemble]" />
+      <item itemvalue="Gradle.beanie [publishToMavenLocal]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.beanie [publishToMavenLocal]" />
+        <item itemvalue="Gradle.beanie [assemble]" />
+        <item itemvalue="Gradle.beanie [build]" />
+        <item itemvalue="Gradle./Users/mridang/Nosto/sdfg [assemble]" />
         <item itemvalue="Gradle.beanie" />
-        <item itemvalue="Gradle.beanie [jar]" />
-        <item itemvalue="Gradle.ConstructorNullPointerTest|InconsistentConstructorParamsTest|InconsistentPropertyNamesTest|MixedPropertyNamingStrategyTest|MutabilityTest|NoNullCollectionsTest|PolymorphicJacksonBeanTest|PrimitiveUnboxingGetterTest|TypeVariableJacksonBeanTest" />
-        <item itemvalue="Gradle.ConstructorNullPointerTest|InconsistentConstructorParamsTest|InconsistentPropertyNamesTest|MixedPropertyNamingStrategyTest|MutabilityTest|NoNullCollectionsTest|PolymorphicJacksonBeanTest|PrimitiveUnboxingGetterTest|TypeVariableJacksonBeanTest" />
-        <item itemvalue="Gradle.beanie [publish]" />
       </list>
     </recent_temporary>
   </component>

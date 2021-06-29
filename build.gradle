@@ -1,6 +1,5 @@
-import net.ltgt.gradle.errorprone.CheckSeverity
-
 //file:noinspection GrUnresolvedAccess
+import net.ltgt.gradle.errorprone.CheckSeverity
 
 buildscript {
     buildscript {
@@ -35,11 +34,7 @@ allprojects { project ->
     version '1.0.5'
 
     repositories {
-        google()
         mavenCentral()
-        maven {
-            url 'https://dl.bintray.com/palantir/releases'
-        }
         maven {
             url 'https://maven.onehippo.com/maven2/'
         }
