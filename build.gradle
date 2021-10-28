@@ -168,11 +168,15 @@ allprojects { project ->
                 pom {
                     //noinspection GroovyAssignabilityCheck
                     name = 'Beanie'
+                    //noinspection GroovyAssignabilityCheck
                     description = 'A simple library to sanity-check your bean ser-deser'
+                    //noinspection GroovyAssignabilityCheck
                     url = 'https://github.com/nosto/beanie'
                     licenses {
                         license {
+                            //noinspection GroovyAssignabilityCheck
                             name = 'The Apache License, Version 2.0'
+                            //noinspection GroovyAssignabilityCheck
                             url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
                         }
                     }
