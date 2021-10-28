@@ -94,6 +94,7 @@ allprojects { project ->
 
 // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
     spotbugsMain {
+        //noinspection GroovyAssignabilityCheck
         reports {
             xml.enabled = true
         }
@@ -101,6 +102,7 @@ allprojects { project ->
 
     // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
     spotbugsTest {
+        //noinspection GroovyAssignabilityCheck
         reports {
             xml.enabled = true
         }
@@ -146,19 +148,25 @@ allprojects { project ->
             }
         }
         publications {
+            //noinspection GroovyAssignabilityCheck
             mavenJava(MavenPublication) {
                 versionMapping {
+                    //noinspection GroovyAssignabilityCheck
                     usage('java-api') {
+                        //noinspection GroovyAssignabilityCheck
                         fromResolutionOf('runtimeClasspath')
                     }
+                    //noinspection GroovyAssignabilityCheck
                     usage('java-runtime') {
                         //noinspection GroovyImplicitNullArgumentCall
                         fromResolutionResult()
                     }
                 }
+                //noinspection GroovyAssignabilityCheck
                 from components.java
 
                 pom {
+                    //noinspection GroovyAssignabilityCheck
                     name = 'Beanie'
                     description = 'A simple library to sanity-check your bean ser-deser'
                     url = 'https://github.com/nosto/beanie'
