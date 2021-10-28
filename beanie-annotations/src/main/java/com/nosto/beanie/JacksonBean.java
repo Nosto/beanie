@@ -10,6 +10,7 @@
 package com.nosto.beanie;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -19,7 +20,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * A base class for Jackson-mapped beans.
  * <p>
  * All sub-classes are automatically unit-tested and they should have
- * a constructor with {@link com.fasterxml.jackson.annotation.JsonCreator}
+ * a constructor with {@link JsonCreator}
  * that takes all serialization properties.
  * <p>
  * Ensures that all beans that extend this can be serialised, then deserialised

@@ -10,13 +10,13 @@
 
 package com.nosto.beanie;
 
-import java.io.IOException;
-
-import javax.annotation.Nullable;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.annotation.Nullable;
+import java.io.IOException;
 
 public interface BeanieProvider {
 
@@ -30,7 +30,7 @@ public interface BeanieProvider {
         }
     }
 
-    default <T> T fromJSON(String json, Class<T> type) throws IOException {
+    default <T> T fromJSON(String json, Class<T> type) throws JsonProcessingException {
         return getMapper().readValue(json, type);
     }
 
