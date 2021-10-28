@@ -44,10 +44,12 @@ public class InvalidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonB
             this.propertyB = propertyB;
         }
 
+        @SuppressWarnings("unused")
         public String getPropertyA() {
             return propertyA;
         }
 
+        @SuppressWarnings("unused")
         public String getPropertyB() {
             return propertyB;
         }

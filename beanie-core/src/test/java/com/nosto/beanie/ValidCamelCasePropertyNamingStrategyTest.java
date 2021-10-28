@@ -34,10 +34,12 @@ public class ValidCamelCasePropertyNamingStrategyTest extends AbstractJacksonBea
             this.propertyB = propertyB;
         }
 
+        @SuppressWarnings("unused")
         public String getPropertyA() {
             return propertyA;
         }
 
+        @SuppressWarnings("unused")
         public String getPropertyB() {
             return propertyB;
         }
