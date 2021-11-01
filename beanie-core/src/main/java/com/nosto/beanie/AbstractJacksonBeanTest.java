@@ -10,7 +10,6 @@
 
 package com.nosto.beanie;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,13 +28,13 @@ import org.junit.Test;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.security.SecureRandom;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -59,12 +58,12 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     private final Class<? extends T> deserClass;
     private final Class<? extends U> concreteClass;
 
-    @SuppressWarnings({"JUnitTestCaseWithNonTrivialConstructors"})
+    @SuppressWarnings({"ConstructorNotProtectedInAbstractClass", "JUnitTestCaseWithNonTrivialConstructors"})
     public AbstractJacksonBeanTest(Class<? extends U> clazz) {
         this(clazz, clazz);
     }
 
-    @SuppressWarnings({"JUnitTestCaseWithNonTrivialConstructors"})
+    @SuppressWarnings({"ConstructorNotProtectedInAbstractClass", "JUnitTestCaseWithNonTrivialConstructors"})
     public AbstractJacksonBeanTest(Class<? extends T> deserClass, Class<? extends U> concreteClass) {
         this.deserClass = deserClass;
         this.concreteClass = concreteClass;
@@ -75,7 +74,9 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     }
 
     /**
-     * Assert all properties have an equivalent {@link JsonCreator} parameter
+     * Assert all properties have an equivalent
+     * {@link com.fasterxml.jackson.annotation.JsonCreator}
+     * parameter
      */
     @Test
     public void constructorParameters() {
@@ -115,44 +116,33 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
 
     /**
      * Test that all properties of a bean are named with a consistent naming strategy.
-     * If the bean is configured to use a specific naming strategy, property names should be consistent with that strategy.
      */
     @Test
     public void namingStrategy() {
-        BeanDescription description = getDescription();
-        getDescription().findProperties()
-                .forEach(property -> verifyPropertyName(description, property));
-    }
-
-    private void verifyPropertyName(BeanDescription bean, BeanPropertyDefinition property) {
-        PropertyNamingStrategy.PropertyNamingStrategyBase namingStrategy = Optional.ofNullable(bean.getClassAnnotations().get(JsonNaming.class))
-                .map(JsonNaming::value)
-                .filter(PropertyNamingStrategy.PropertyNamingStrategyBase.class::isAssignableFrom)
-                .map(c -> {
-                    try {
-                        return c.getConstructor().newInstance();
-                    } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                        throw new RuntimeException("Cannot construct naming strategy.", e);
-                    }
-                })
-                .map(PropertyNamingStrategy.PropertyNamingStrategyBase.class::cast)
-                .orElseGet(() -> {
-                    // try to detect the naming strategy
-                    String name = property.getName();
-                    if (name.contains("_")) {
-                        return (PropertyNamingStrategy.PropertyNamingStrategyBase) PropertyNamingStrategy.SNAKE_CASE;
+        BeanDescription beanDescription = getDescription();
+        Map<Class<? extends PropertyNamingStrategy>, List<String>> cases = beanDescription.findProperties()
+                .stream()
+                .map(BeanPropertyDefinition::getName)
+                .collect(Collectors.groupingBy(name -> {
+                    if (name.contains("_") && name.toLowerCase().equals(name)) {
+                        return PropertyNamingStrategy.SNAKE_CASE.getClass();
                     } else {
-                        return new PropertyNamingStrategy.PropertyNamingStrategyBase() {
-                            @Override
-                            public String translate(String propertyName) {
-                                return propertyName;
-                            }
-                        };
+                        return PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
                     }
-                });
+                }));
+        Assert.assertEquals(cases.toString(), 1, cases.size());
 
-        Assert.assertEquals(String.format("Property %s does not use strategy %s", property.getName(), namingStrategy.getClass()),
-                namingStrategy.translate(property.getName()), property.getName());
+        Class<? extends PropertyNamingStrategy> propertyNamingStrategy = cases.keySet().iterator().next();
+
+        Class<? extends PropertyNamingStrategy> beanPropertyNamingStrategy;
+        JsonNaming jsonNaming = beanDescription.getClassAnnotations().get(JsonNaming.class);
+        if (jsonNaming == null) {
+            PropertyNamingStrategy configuredNamingStrategy = getMapper().getPropertyNamingStrategy();
+            beanPropertyNamingStrategy = configuredNamingStrategy == null ? PropertyNamingStrategy.class : configuredNamingStrategy.getClass();
+        } else {
+            beanPropertyNamingStrategy = jsonNaming.value();
+        }
+        Assert.assertEquals(beanPropertyNamingStrategy, propertyNamingStrategy);
     }
 
     /**
