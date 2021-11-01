@@ -26,6 +26,7 @@ public class InconsistentConstructorParamsTest extends AbstractJacksonBeanTest<I
         super(TestBean.class);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test(expected = AssertionError.class)
     @Override
     public void constructorParameters() {

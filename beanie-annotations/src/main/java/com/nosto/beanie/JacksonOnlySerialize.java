@@ -17,8 +17,8 @@ import java.lang.annotation.Target;
 import com.fasterxml.jackson.annotation.JacksonAnnotation;
 
 /**
- * Annotation to denote that an property on a bean is to be serilaised
- * but never deserialieed e.g. a constant value. As the Jackson bean
+ * Annotation to denote that an property on a bean is to be serialized
+ * but never deserialized e.g. a constant value. As the Jackson bean
  * tests assert that all properties must have an accessor (field or getter)
  * and a corresponding constructor parameter.
  *

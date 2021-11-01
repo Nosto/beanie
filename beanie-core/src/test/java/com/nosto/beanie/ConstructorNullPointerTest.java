@@ -31,12 +31,14 @@ public class ConstructorNullPointerTest extends AbstractJacksonBeanTest<TestBean
         super(TestBean.class);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test(expected = RuntimeException.class)
     @Override
     public void serdeCollection() {
         super.serdeCollection();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test(expected = RuntimeException.class)
     @Override
     public void serdeCollectionAsWell() {

@@ -21,6 +21,7 @@ public class InvalidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonB
         super(TestBean.class);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test(expected = AssertionError.class)
     @Override
     public void namingStrategy() {
