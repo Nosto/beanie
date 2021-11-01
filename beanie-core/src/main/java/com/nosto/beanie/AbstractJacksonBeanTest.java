@@ -64,7 +64,6 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
         this(clazz, clazz);
     }
 
-    @SuppressWarnings({"JUnitTestCaseWithNonTrivialConstructors"})
     public AbstractJacksonBeanTest(Class<? extends T> deserClass, Class<? extends U> concreteClass) {
         this.deserClass = deserClass;
         this.concreteClass = concreteClass;
