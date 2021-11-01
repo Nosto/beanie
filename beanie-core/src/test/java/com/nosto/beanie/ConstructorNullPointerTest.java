@@ -53,8 +53,8 @@ public class ConstructorNullPointerTest extends AbstractJacksonBeanTest<TestBean
         @Nullable
         private final String bar;
 
+        @SuppressWarnings({"NullAway", "ConditionalExpressionWithIdenticalBranches", "ConstantConditions"})
         @SuppressFBWarnings({"DB_DUPLICATE_BRANCHES", "NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE"})
-        @SuppressWarnings({"ConditionalExpressionWithIdenticalBranches", "ConstantConditions"})
         @JsonCreator
         public TestBean(@Nullable @JsonProperty("bar") String bar) {
             this.bar = bar.isEmpty() ? bar : bar;

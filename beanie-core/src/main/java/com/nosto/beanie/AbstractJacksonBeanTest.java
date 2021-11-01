@@ -42,7 +42,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@SuppressWarnings("UseOfObsoleteDateTimeApi")
+@SuppressWarnings({"JavaUtilDate", "UseOfObsoleteDateTimeApi"})
 public abstract class AbstractJacksonBeanTest<T, U extends T> {
 
     private static final Random RANDOM = new SecureRandom();

@@ -54,7 +54,7 @@ public class PrimitiveUnboxingGetterTest extends AbstractJacksonBeanTest<TestBea
             this.bar = bar;
         }
 
-        @SuppressWarnings({"unused", "ConstantConditions"})
+        @SuppressWarnings({"NullAway", "unused", "ConstantConditions"})
         public int getBar() {
             return bar;
         }
