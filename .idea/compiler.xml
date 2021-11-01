@@ -39,7 +39,7 @@
         <module name="beanie.test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.9">
+    <bytecodeTargetLevel target="1.10">
       <module name="sdfg" target="11" />
       <module name="sdfg.main" target="11" />
       <module name="sdfg.test" target="11" />

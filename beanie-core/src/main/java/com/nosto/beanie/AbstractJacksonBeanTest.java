@@ -120,28 +120,39 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     @Test
     public void namingStrategy() {
         BeanDescription beanDescription = getDescription();
-        Map<Class<? extends PropertyNamingStrategy>, List<String>> cases = beanDescription.findProperties()
+        Map<PropertyNamingStrategy, List<String>> cases = beanDescription.findProperties()
                 .stream()
                 .map(BeanPropertyDefinition::getName)
                 .collect(Collectors.groupingBy(name -> {
                     if (name.contains("_") && name.toLowerCase().equals(name)) {
-                        return PropertyNamingStrategy.SNAKE_CASE.getClass();
+                        return PropertyNamingStrategy.SNAKE_CASE;
                     } else {
-                        return PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
+                        return PropertyNamingStrategy.LOWER_CAMEL_CASE;
                     }
                 }));
         Assert.assertEquals(cases.toString(), 1, cases.size());
 
-        Class<? extends PropertyNamingStrategy> propertyNamingStrategy = cases.keySet().iterator().next();
+        @SuppressWarnings("unchecked")
+        Class<PropertyNamingStrategy> propertyNamingStrategy = cases.keySet()
+                .stream()
+                .findAny()
+                // Required to get around compilation error
+                .map(s -> (Class<PropertyNamingStrategy>) s.getClass())
+                .orElseThrow();
 
-        Class<? extends PropertyNamingStrategy> beanPropertyNamingStrategy;
-        JsonNaming jsonNaming = beanDescription.getClassAnnotations().get(JsonNaming.class);
-        if (jsonNaming == null) {
-            PropertyNamingStrategy configuredNamingStrategy = getMapper().getPropertyNamingStrategy();
-            beanPropertyNamingStrategy = configuredNamingStrategy == null ? PropertyNamingStrategy.class : configuredNamingStrategy.getClass();
-        } else {
-            beanPropertyNamingStrategy = jsonNaming.value();
-        }
+        @SuppressWarnings("unchecked")
+        Class<PropertyNamingStrategy> configuredNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
+                // Required to get around compilation error
+                .map(s -> (Class<PropertyNamingStrategy>) s.getClass())
+                .orElse(PropertyNamingStrategy.class);
+
+        @SuppressWarnings("unchecked")
+        Class<PropertyNamingStrategy> beanPropertyNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
+                .map(JsonNaming::value)
+                // Required to get around compilation error
+                .map(s -> (Class<PropertyNamingStrategy>) s)
+                .orElse(configuredNamingStrategy);
+
         Assert.assertEquals(beanPropertyNamingStrategy, propertyNamingStrategy);
     }
 
