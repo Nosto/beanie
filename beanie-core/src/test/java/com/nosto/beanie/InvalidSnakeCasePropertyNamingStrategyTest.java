@@ -10,11 +10,12 @@
 
 package com.nosto.beanie;
 
+import org.junit.Test;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import org.junit.Test;
 
 public class InvalidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBeanTest<InvalidSnakeCasePropertyNamingStrategyTest.TestBean, InvalidSnakeCasePropertyNamingStrategyTest.TestBean> {
     public InvalidSnakeCasePropertyNamingStrategyTest() {

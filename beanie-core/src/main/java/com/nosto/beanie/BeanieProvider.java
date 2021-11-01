@@ -10,13 +10,14 @@
 
 package com.nosto.beanie;
 
+import java.io.IOException;
+
+import javax.annotation.Nullable;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import javax.annotation.Nullable;
-import java.io.IOException;
 
 public interface BeanieProvider {
 

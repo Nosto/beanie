@@ -10,24 +10,6 @@
 
 package com.nosto.beanie;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.databind.BeanDescription;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.fasterxml.jackson.databind.introspect.AnnotatedField;
-import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
-import com.nosto.beanie.jeasy.ExcludedMapAndCollectionsAsEmptyRandomizerRegistry;
-import com.nosto.beanie.jeasy.ForceAllNonPrimitivesAsNullRandomizerRegistry;
-import org.jeasy.random.EasyRandom;
-import org.jeasy.random.EasyRandomParameters;
-import org.jeasy.random.api.RandomizerRegistry;
-import org.jeasy.random.randomizers.registry.CustomRandomizerRegistry;
-import org.junit.Assert;
-import org.junit.Test;
-
-import javax.annotation.Nullable;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
@@ -41,6 +23,26 @@ import java.util.Random;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import javax.annotation.Nullable;
+
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.jeasy.random.api.RandomizerRegistry;
+import org.jeasy.random.randomizers.registry.CustomRandomizerRegistry;
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.BeanDescription;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.introspect.AnnotatedField;
+import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
+import com.nosto.beanie.jeasy.ExcludedMapAndCollectionsAsEmptyRandomizerRegistry;
+import com.nosto.beanie.jeasy.ForceAllNonPrimitivesAsNullRandomizerRegistry;
 
 @SuppressWarnings({"JavaUtilDate", "UseOfObsoleteDateTimeApi"})
 public abstract class AbstractJacksonBeanTest<T, U extends T> {
