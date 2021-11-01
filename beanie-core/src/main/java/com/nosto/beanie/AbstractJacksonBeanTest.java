@@ -10,6 +10,7 @@
 
 package com.nosto.beanie;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -58,12 +59,12 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     private final Class<? extends T> deserClass;
     private final Class<? extends U> concreteClass;
 
-    @SuppressWarnings({"ConstructorNotProtectedInAbstractClass", "JUnitTestCaseWithNonTrivialConstructors"})
+    @SuppressWarnings("JUnitTestCaseWithNonTrivialConstructors")
     public AbstractJacksonBeanTest(Class<? extends U> clazz) {
         this(clazz, clazz);
     }
 
-    @SuppressWarnings({"ConstructorNotProtectedInAbstractClass", "JUnitTestCaseWithNonTrivialConstructors"})
+    @SuppressWarnings("JUnitTestCaseWithNonTrivialConstructors")
     public AbstractJacksonBeanTest(Class<? extends T> deserClass, Class<? extends U> concreteClass) {
         this.deserClass = deserClass;
         this.concreteClass = concreteClass;
@@ -74,9 +75,7 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     }
 
     /**
-     * Assert all properties have an equivalent
-     * {@link com.fasterxml.jackson.annotation.JsonCreator}
-     * parameter
+     * Assert all properties have an equivalent {@link JsonCreator} parameter
      */
     @Test
     public void constructorParameters() {
@@ -115,7 +114,8 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     }
 
     /**
-     * Test that all properties of a bean are named with a consistent naming strategy.
+     * Test that all properties of a bean are named with a consistent naming strategy and all property names
+     * comply with the bean's naming strategy.
      */
     @Test
     public void namingStrategy() {
