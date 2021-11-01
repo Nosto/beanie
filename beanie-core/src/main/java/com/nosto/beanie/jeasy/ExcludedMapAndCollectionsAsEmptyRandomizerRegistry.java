@@ -34,6 +34,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 @Priority(2)
 public class ExcludedMapAndCollectionsAsEmptyRandomizerRegistry implements RandomizerRegistry {
 
+    @Nullable
     @SuppressFBWarnings("URF_UNREAD_FIELD")
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private EasyRandomParameters easyRandomParameters;

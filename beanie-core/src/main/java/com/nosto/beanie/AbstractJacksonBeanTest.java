@@ -42,7 +42,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@SuppressWarnings("UseOfObsoleteDateTimeApi")
+@SuppressWarnings({"JavaUtilDate", "UseOfObsoleteDateTimeApi"})
 public abstract class AbstractJacksonBeanTest<T, U extends T> {
 
     private static final Random RANDOM = new SecureRandom();
@@ -64,7 +64,6 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
         this(clazz, clazz);
     }
 
-    @SuppressWarnings("JUnitTestCaseWithNonTrivialConstructors")
     public AbstractJacksonBeanTest(Class<? extends T> deserClass, Class<? extends U> concreteClass) {
         this.deserClass = deserClass;
         this.concreteClass = concreteClass;

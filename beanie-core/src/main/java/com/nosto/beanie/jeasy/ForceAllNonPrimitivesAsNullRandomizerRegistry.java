@@ -26,6 +26,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 @Priority(2)
 public class ForceAllNonPrimitivesAsNullRandomizerRegistry implements RandomizerRegistry {
 
+    @Nullable
     @SuppressFBWarnings("URF_UNREAD_FIELD")
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private EasyRandomParameters easyRandomParameters;

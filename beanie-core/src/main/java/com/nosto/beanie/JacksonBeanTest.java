@@ -27,9 +27,6 @@ import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 
-/**
- * @author ollik1
- */
 @RunWith(Parameterized.class)
 public abstract class JacksonBeanTest extends AbstractJacksonBeanTest<JacksonBean, JacksonBean> {
 
