@@ -119,25 +119,6 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     @Test
     public void namingStrategy() {
         BeanDescription beanDescription = getDescription();
-        Map<PropertyNamingStrategy, List<String>> cases = beanDescription.findProperties()
-                .stream()
-                .map(BeanPropertyDefinition::getName)
-                .collect(Collectors.groupingBy(name -> {
-                    if (name.contains("_") && name.toLowerCase().equals(name)) {
-                        return PropertyNamingStrategy.SNAKE_CASE;
-                    } else {
-                        return PropertyNamingStrategy.LOWER_CAMEL_CASE;
-                    }
-                }));
-        Assert.assertEquals(cases.toString(), 1, cases.size());
-
-        @SuppressWarnings("unchecked")
-        Class<PropertyNamingStrategy> propertyNamingStrategy = cases.keySet()
-                .stream()
-                .findAny()
-                // Required to get around compilation error
-                .map(s -> (Class<PropertyNamingStrategy>) s.getClass())
-                .orElseThrow();
 
         @SuppressWarnings("unchecked")
         Class<PropertyNamingStrategy> configuredNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
@@ -151,6 +132,30 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
                 // Required to get around compilation error
                 .map(s -> (Class<PropertyNamingStrategy>) s)
                 .orElse(configuredNamingStrategy);
+
+        Map<Class<PropertyNamingStrategy>, List<String>> cases = beanDescription.findProperties()
+                .stream()
+                .map(BeanPropertyDefinition::getName)
+                .collect(Collectors.groupingBy(name -> {
+                    if (name.contains("_") && name.toLowerCase().equals(name)) {
+                        // Required to get around compilation error
+                        //noinspection unchecked
+                        return (Class<PropertyNamingStrategy>) PropertyNamingStrategy.SNAKE_CASE.getClass();
+                    } else if (name.toLowerCase().equals(name)) {
+                        // Could be snake case or camel case, so let's assume the class's naming strategy.
+                        return beanPropertyNamingStrategy;
+                    } else {
+                        // Required to get around compilation error
+                        //noinspection unchecked
+                        return (Class<PropertyNamingStrategy>) PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
+                    }
+                }));
+        Assert.assertEquals(cases.toString(), 1, cases.size());
+
+        Class<PropertyNamingStrategy> propertyNamingStrategy = cases.keySet()
+                .stream()
+                .findAny()
+                .orElseThrow();
 
         Assert.assertEquals(beanPropertyNamingStrategy, propertyNamingStrategy);
     }

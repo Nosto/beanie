@@ -27,11 +27,15 @@ public class ValidCamelCasePropertyNamingStrategyTest extends AbstractJacksonBea
 
         private final String propertyA;
         private final String propertyB;
+        private final String foo;
 
         @JsonCreator
-        public TestBean(@JsonProperty("propertyA") String propertyA, @JsonProperty("someProperty") String propertyB) {
+        public TestBean(@JsonProperty("propertyA") String propertyA,
+                        @JsonProperty("someProperty") String propertyB,
+                        @JsonProperty("foo") String foo) {
             this.propertyA = propertyA;
             this.propertyB = propertyB;
+            this.foo = foo;
         }
 
         @SuppressWarnings("unused")
@@ -43,6 +47,11 @@ public class ValidCamelCasePropertyNamingStrategyTest extends AbstractJacksonBea
         @JsonProperty("someProperty")
         public String getPropertyB() {
             return propertyB;
+        }
+
+        @SuppressWarnings("unused")
+        public String getFoo() {
+            return foo;
         }
     }
 }
