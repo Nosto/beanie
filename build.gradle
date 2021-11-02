@@ -34,7 +34,7 @@ allprojects { project ->
     apply plugin: "jacoco"
 
     group 'com.nosto'
-    version '1.0.6'
+    version '1.0.7'
 
     repositories {
         mavenCentral()
@@ -100,6 +100,11 @@ allprojects { project ->
 
     jacocoTestReport {
         dependsOn test // tests are required to run before generating the report
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_1_10
+        targetCompatibility = JavaVersion.VERSION_1_10
     }
 
     javadoc {

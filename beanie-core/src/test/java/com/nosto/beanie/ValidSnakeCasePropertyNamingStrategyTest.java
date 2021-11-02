@@ -30,11 +30,15 @@ public class ValidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBea
 
         private final String propertyA;
         private final String propertyB;
+        private final String propertyC;
 
         @JsonCreator
-        public TestBean(@JsonProperty("property_a") String propertyA, @JsonProperty("property_b") String propertyB) {
+        public TestBean(@JsonProperty("property_a") String propertyA,
+                        @JsonProperty("some_property") String propertyB,
+                        @JsonProperty("_property_c") String propertyC) {
             this.propertyA = propertyA;
             this.propertyB = propertyB;
+            this.propertyC = propertyC;
         }
 
         @SuppressWarnings("unused")
@@ -43,8 +47,14 @@ public class ValidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBea
         }
 
         @SuppressWarnings("unused")
+        @JsonProperty("some_property")
         public String getPropertyB() {
             return propertyB;
+        }
+
+        @JsonProperty("_property_c")
+        public String getPropertyC() {
+            return propertyC;
         }
     }
 }
