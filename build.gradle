@@ -200,21 +200,12 @@ allprojects { project ->
         }
         publications {
             //noinspection GroovyAssignabilityCheck
-            mavenJava(MavenPublication) {
-                versionMapping {
-                    //noinspection GroovyAssignabilityCheck
-                    usage('java-api') {
-                        //noinspection GroovyAssignabilityCheck
-                        fromResolutionOf('runtimeClasspath')
-                    }
-                    //noinspection GroovyAssignabilityCheck
-                    usage('java-runtime') {
-                        //noinspection GroovyImplicitNullArgumentCall
-                        fromResolutionResult()
-                    }
-                }
+            maven(MavenPublication) {
                 //noinspection GroovyAssignabilityCheck
                 from components.java
+
+                //noinspection GroovyAssignabilityCheck
+                artifact sourcesJar
 
                 pom {
                     //noinspection GroovyAssignabilityCheck
