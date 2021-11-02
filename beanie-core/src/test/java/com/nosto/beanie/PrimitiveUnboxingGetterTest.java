@@ -32,12 +32,14 @@ public class PrimitiveUnboxingGetterTest extends AbstractJacksonBeanTest<TestBea
         return new DefaultBeanieProvider();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test(expected = RuntimeException.class)
     @Override
     public void serdeCollection() {
         super.serdeCollection();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test(expected = RuntimeException.class)
     @Override
     public void serdeCollectionAsWell() {

@@ -23,12 +23,14 @@ public class MutabilityTest extends AbstractJacksonBeanTest<MutabilityTest.Mutab
         super(MutableBean.class);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Override
     @Test(expected = AssertionError.class)
     public void noSetters() {
         super.noSetters();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Override
     @Test(expected = AssertionError.class)
     public void finalProperties() {

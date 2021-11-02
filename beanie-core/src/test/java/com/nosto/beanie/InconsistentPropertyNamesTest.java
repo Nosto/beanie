@@ -26,6 +26,7 @@ public class InconsistentPropertyNamesTest extends AbstractJacksonBeanTest<Incon
         super(TestBean.class);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test(expected = AssertionError.class)
     @Override
     public void serde() {

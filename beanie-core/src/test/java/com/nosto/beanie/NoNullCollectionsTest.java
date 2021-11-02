@@ -28,6 +28,7 @@ public class NoNullCollectionsTest extends AbstractJacksonBeanTest<NoNullCollect
         super(NoNullCollectionsTest.TestBean.class);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test(expected = AssertionError.class)
     @Override
     public void serdeCollectionAsWell() {

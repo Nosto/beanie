@@ -23,6 +23,7 @@ public class MixedPropertyNamingStrategyTest extends AbstractJacksonBeanTest<Mix
         super(TestBean.class);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Test(expected = AssertionError.class)
     @Override
     public void namingStrategy() {
