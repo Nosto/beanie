@@ -34,7 +34,7 @@ allprojects { project ->
     apply plugin: "jacoco"
 
     group 'com.nosto'
-    version '1.0.7'
+    version '1.0.8'
 
     repositories {
         mavenCentral()
