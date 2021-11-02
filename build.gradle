@@ -34,7 +34,7 @@ allprojects { project ->
     apply plugin: "jacoco"
 
     group 'com.nosto'
-    version '1.0.8'
+    version '1.0.9'
 
     repositories {
         mavenCentral()
@@ -101,12 +101,7 @@ allprojects { project ->
     jacocoTestReport {
         dependsOn test // tests are required to run before generating the report
     }
-
-    java {
-        sourceCompatibility = JavaVersion.VERSION_1_10
-        targetCompatibility = JavaVersion.VERSION_1_10
-    }
-
+    
     javadoc {
         options.addBooleanOption('html5', true)
     }
@@ -125,9 +120,9 @@ allprojects { project ->
         from scaladoc.destinationDir
     }*/
 
-    artifacts {
-        archives sourcesJar
-        //archives scaladocJar
+    java {
+        withSourcesJar()
+        withJavadocJar()
     }
 
     // Configuration for the Spotbugs plugin. It seems that it isn't possible to define
@@ -203,9 +198,6 @@ allprojects { project ->
             maven(MavenPublication) {
                 //noinspection GroovyAssignabilityCheck
                 from components.java
-
-                //noinspection GroovyAssignabilityCheck
-                artifact sourcesJar
 
                 pom {
                     //noinspection GroovyAssignabilityCheck
