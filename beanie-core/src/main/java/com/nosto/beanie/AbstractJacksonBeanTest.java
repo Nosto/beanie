@@ -11,13 +11,13 @@
 package com.nosto.beanie;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.security.SecureRandom;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -61,7 +61,7 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     private final Class<? extends T> deserClass;
     private final Class<? extends U> concreteClass;
 
-    @SuppressWarnings({"JUnitTestCaseWithNonTrivialConstructors"})
+    @SuppressWarnings("JUnitTestCaseWithNonTrivialConstructors")
     public AbstractJacksonBeanTest(Class<? extends U> clazz) {
         this(clazz, clazz);
     }
@@ -115,45 +115,51 @@ public abstract class AbstractJacksonBeanTest<T, U extends T> {
     }
 
     /**
-     * Test that all properties of a bean are named with a consistent naming strategy.
-     * If the bean is configured to use a specific naming strategy, property names should be consistent with that strategy.
+     * Test that all properties of a bean are named with a consistent naming strategy and all property names
+     * comply with the bean's naming strategy.
      */
     @Test
     public void namingStrategy() {
-        BeanDescription description = getDescription();
-        getDescription().findProperties()
-                .forEach(property -> verifyPropertyName(description, property));
-    }
+        BeanDescription beanDescription = getDescription();
 
-    private void verifyPropertyName(BeanDescription bean, BeanPropertyDefinition property) {
-        PropertyNamingStrategy.PropertyNamingStrategyBase namingStrategy = Optional.ofNullable(bean.getClassAnnotations().get(JsonNaming.class))
+        @SuppressWarnings("unchecked")
+        Class<PropertyNamingStrategy> configuredNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
+                // Required to get around compilation error
+                .map(s -> (Class<PropertyNamingStrategy>) s.getClass())
+                .orElse(PropertyNamingStrategy.class);
+
+        @SuppressWarnings("unchecked")
+        Class<PropertyNamingStrategy> beanPropertyNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
                 .map(JsonNaming::value)
-                .filter(PropertyNamingStrategy.PropertyNamingStrategyBase.class::isAssignableFrom)
-                .map(c -> {
-                    try {
-                        return c.getConstructor().newInstance();
-                    } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                        throw new RuntimeException("Cannot construct naming strategy.", e);
-                    }
-                })
-                .map(PropertyNamingStrategy.PropertyNamingStrategyBase.class::cast)
-                .orElseGet(() -> {
-                    // try to detect the naming strategy
-                    String name = property.getName();
-                    if (name.contains("_")) {
-                        return (PropertyNamingStrategy.PropertyNamingStrategyBase) PropertyNamingStrategy.SNAKE_CASE;
-                    } else {
-                        return new PropertyNamingStrategy.PropertyNamingStrategyBase() {
-                            @Override
-                            public String translate(String propertyName) {
-                                return propertyName;
-                            }
-                        };
-                    }
-                });
+                // Required to get around compilation error
+                .map(s -> (Class<PropertyNamingStrategy>) s)
+                .orElse(configuredNamingStrategy);
 
-        Assert.assertEquals(String.format("Property %s does not use strategy %s", property.getName(), namingStrategy.getClass()),
-                namingStrategy.translate(property.getName()), property.getName());
+        Map<Class<PropertyNamingStrategy>, List<String>> cases = beanDescription.findProperties()
+                .stream()
+                .map(BeanPropertyDefinition::getName)
+                .collect(Collectors.groupingBy(name -> {
+                    if (name.contains("_") && name.toLowerCase().equals(name)) {
+                        // Required to get around compilation error
+                        //noinspection unchecked
+                        return (Class<PropertyNamingStrategy>) PropertyNamingStrategy.SNAKE_CASE.getClass();
+                    } else if (name.toLowerCase().equals(name)) {
+                        // Could be snake case or camel case, so let's assume the class's naming strategy.
+                        return beanPropertyNamingStrategy;
+                    } else {
+                        // Required to get around compilation error
+                        //noinspection unchecked
+                        return (Class<PropertyNamingStrategy>) PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
+                    }
+                }));
+        Assert.assertEquals(cases.toString(), 1, cases.size());
+
+        Class<PropertyNamingStrategy> propertyNamingStrategy = cases.keySet()
+                .stream()
+                .findAny()
+                .orElseThrow();
+
+        Assert.assertEquals(beanPropertyNamingStrategy, propertyNamingStrategy);
     }
 
     /**
