@@ -44,7 +44,7 @@ import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
 import com.nosto.beanie.jeasy.ExcludedMapAndCollectionsAsEmptyRandomizerRegistry;
 import com.nosto.beanie.jeasy.ForceAllNonPrimitivesAsNullRandomizerRegistry;
 
-@SuppressWarnings({"JavaUtilDate", "UseOfObsoleteDateTimeApi"})
+@SuppressWarnings({"Since15", "JavaUtilDate", "UseOfObsoleteDateTimeApi", "RedundantSuppression"})
 public abstract class AbstractJacksonBeanTest<T, U extends T> {
 
     private static final Random RANDOM = new SecureRandom();
