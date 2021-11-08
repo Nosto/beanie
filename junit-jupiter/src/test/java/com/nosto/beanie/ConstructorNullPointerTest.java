@@ -9,13 +9,15 @@
  */
 package com.nosto.beanie;
 
+import java.util.stream.Stream;
+
 import javax.annotation.Nullable;
 
-import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.nosto.beanie.ConstructorNullPointerTest.TestBean;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
@@ -25,32 +27,21 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  *
  * @author ollik1
  */
-public class ConstructorNullPointerTest extends AbstractJacksonBeanTest<TestBean, TestBean> {
+public class ConstructorNullPointerTest implements JupiterBeanieTest<AbstractTestBean>
+        , ConstructorParametersTest<AbstractTestBean> {
 
-    public ConstructorNullPointerTest() {
-        super(TestBean.class);
+    @ParameterizedTest
+    @MethodSource
+    public void constructorParameters(Class<AbstractTestBean> concreteClass) {
+        testConstructorParameters(concreteClass);
     }
 
-    @SuppressWarnings("EmptyMethod")
-    @Test(expected = RuntimeException.class)
-    @Override
-    public void serdeCollection() {
-        super.serdeCollection();
+    @SuppressWarnings("unused")
+    public static Stream<Class<? extends AbstractTestBean>> constructorParameters() {
+        return Stream.of(AbstractTestBean.class);
     }
 
-    @SuppressWarnings("EmptyMethod")
-    @Test(expected = RuntimeException.class)
-    @Override
-    public void serdeCollectionAsWell() {
-        super.serdeCollectionAsWell();
-    }
-
-    @Override
-    protected BeanieProvider getBeanieProvider() {
-        return new DefaultBeanieProvider();
-    }
-
-    public static class TestBean extends com.nosto.beanie.AbstractTestBean {
+    public static class TestBean extends AbstractTestBean {
 
         @Nullable
         private final String bar;

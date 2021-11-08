@@ -9,55 +9,52 @@
  */
 package com.nosto.beanie;
 
-import javax.annotation.Nullable;
-
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.nosto.beanie.PrimitiveUnboxingGetterTest.TestBean;
 
 /**
  * Test that the test suite catches issues where {@link JsonCreator}
  * property names do not match with the bean property names
+ *
+ * @author ollik1
  */
-public class PrimitiveUnboxingGetterTest extends AbstractJacksonBeanTest<TestBean, TestBean> {
+public class InconsistentConstructorParamsTest extends AbstractJacksonBeanTest<InconsistentConstructorParamsTest.TestBean> {
 
-    public PrimitiveUnboxingGetterTest() {
+    public InconsistentConstructorParamsTest() {
         super(TestBean.class);
     }
 
+    @SuppressWarnings("EmptyMethod")
+    @Test(expected = AssertionError.class)
     @Override
-    protected BeanieProvider getBeanieProvider() {
+    public void constructorParameters() {
+        super.constructorParameters();
+    }
+
+    @Override
+    public BeanieProvider getBeanieProvider() {
         return new DefaultBeanieProvider();
     }
 
-    @SuppressWarnings("EmptyMethod")
-    @Test(expected = RuntimeException.class)
-    @Override
-    public void serdeCollection() {
-        super.serdeCollection();
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @Test(expected = RuntimeException.class)
-    @Override
-    public void serdeCollectionAsWell() {
-        super.serdeCollectionAsWell();
-    }
-
     public static class TestBean extends AbstractTestBean {
-
-        @Nullable
-        private final Integer bar;
+        private final String foo;
+        private final String bar;
 
         @JsonCreator
-        public TestBean(@Nullable @JsonProperty("bar") Integer bar) {
+        public TestBean(@JsonProperty("foo") String foo, @JsonProperty("baz") String bar) {
+            this.foo = foo;
             this.bar = bar;
         }
 
-        @SuppressWarnings({"NullAway", "unused", "ConstantConditions"})
-        public int getBar() {
+        @SuppressWarnings("unused")
+        public String getFoo() {
+            return foo;
+        }
+
+        @SuppressWarnings("unused")
+        public String getBar() {
             return bar;
         }
     }

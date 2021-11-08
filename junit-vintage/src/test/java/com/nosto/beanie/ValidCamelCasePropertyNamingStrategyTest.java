@@ -12,33 +12,30 @@ package com.nosto.beanie;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-public class ValidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBeanTest<ValidSnakeCasePropertyNamingStrategyTest.TestBean, ValidSnakeCasePropertyNamingStrategyTest.TestBean> {
-    public ValidSnakeCasePropertyNamingStrategyTest() {
+public class ValidCamelCasePropertyNamingStrategyTest extends AbstractJacksonBeanTest<ValidCamelCasePropertyNamingStrategyTest.TestBean> {
+    public ValidCamelCasePropertyNamingStrategyTest() {
         super(TestBean.class);
     }
 
     @Override
-    protected BeanieProvider getBeanieProvider() {
+    public BeanieProvider getBeanieProvider() {
         return new DefaultBeanieProvider();
     }
 
-    @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
     public static class TestBean extends AbstractTestBean {
 
         private final String propertyA;
         private final String propertyB;
-        private final String propertyC;
+        private final String foo;
 
         @JsonCreator
-        public TestBean(@JsonProperty("property_a") String propertyA,
-                        @JsonProperty("some_property") String propertyB,
-                        @JsonProperty("_property_c") String propertyC) {
+        public TestBean(@JsonProperty("propertyA") String propertyA,
+                        @JsonProperty("someProperty") String propertyB,
+                        @JsonProperty("foo") String foo) {
             this.propertyA = propertyA;
             this.propertyB = propertyB;
-            this.propertyC = propertyC;
+            this.foo = foo;
         }
 
         @SuppressWarnings("unused")
@@ -47,14 +44,14 @@ public class ValidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBea
         }
 
         @SuppressWarnings("unused")
-        @JsonProperty("some_property")
+        @JsonProperty("someProperty")
         public String getPropertyB() {
             return propertyB;
         }
 
-        @JsonProperty("_property_c")
-        public String getPropertyC() {
-            return propertyC;
+        @SuppressWarnings("unused")
+        public String getFoo() {
+            return foo;
         }
     }
 }

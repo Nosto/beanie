@@ -15,14 +15,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Ignore
-public class TypeVariableJacksonBeanTest extends AbstractJacksonBeanTest<TypeVariableJacksonBeanTest.Concrete, TypeVariableJacksonBeanTest.Concrete> {
+public class TypeVariableJacksonBeanTest extends AbstractJacksonBeanTest<TypeVariableJacksonBeanTest.Concrete> {
 
     public TypeVariableJacksonBeanTest() {
         super(TypeVariableJacksonBeanTest.Concrete.class);
     }
 
     @Override
-    protected BeanieProvider getBeanieProvider() {
+    public BeanieProvider getBeanieProvider() {
         return new DefaultBeanieProvider();
     }
 

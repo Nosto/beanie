@@ -9,48 +9,52 @@
  */
 package com.nosto.beanie;
 
-import java.util.List;
-
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Test that the test suite catches issues where {@link JsonCreator}
- * property names do not match with the bean property names
- *
  * @author mridang
  */
-public class NoNullCollectionsTest extends AbstractJacksonBeanTest<NoNullCollectionsTest.TestBean, NoNullCollectionsTest.TestBean> {
+public class MixedPropertyNamingStrategyTest extends AbstractJacksonBeanTest<MixedPropertyNamingStrategyTest.TestBean> {
 
-    public NoNullCollectionsTest() {
-        super(NoNullCollectionsTest.TestBean.class);
+    public MixedPropertyNamingStrategyTest() {
+        super(TestBean.class);
     }
 
     @SuppressWarnings("EmptyMethod")
     @Test(expected = AssertionError.class)
     @Override
-    public void serdeCollectionAsWell() {
-        super.serdeCollectionAsWell();
+    public void namingStrategy() {
+        super.namingStrategy();
     }
 
     @Override
-    protected BeanieProvider getBeanieProvider() {
+    public BeanieProvider getBeanieProvider() {
         return new DefaultBeanieProvider();
     }
 
+    @SuppressWarnings("QuestionableName")
     public static class TestBean extends AbstractTestBean {
-        private final List<String> bars;
+
+        private final String foo;
+        private final String bar;
 
         @JsonCreator
-        public TestBean(@JsonProperty("bars") List<String> bars) {
-            this.bars = bars;
+        public TestBean(@JsonProperty("fo_o") String foo, @JsonProperty("b_Ar") String bar) {
+            this.foo = foo;
+            this.bar = bar;
         }
 
-        @SuppressWarnings("unused")
-        public List<String> getBars() {
-            return bars;
+        @JsonProperty("fo_o")
+        public String getFo() {
+            return foo;
+        }
+
+        @JsonProperty("b_Ar")
+        public String getBar() {
+            return bar;
         }
     }
 }

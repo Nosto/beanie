@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * @author ollik1
  */
-public class MutabilityTest extends AbstractJacksonBeanTest<MutabilityTest.MutableBean, MutabilityTest.MutableBean> {
+public class MutabilityTest extends AbstractJacksonBeanTest<MutabilityTest.MutableBean> {
 
     public MutabilityTest() {
         super(MutableBean.class);
@@ -38,7 +38,7 @@ public class MutabilityTest extends AbstractJacksonBeanTest<MutabilityTest.Mutab
     }
 
     @Override
-    protected BeanieProvider getBeanieProvider() {
+    public BeanieProvider getBeanieProvider() {
         return new DefaultBeanieProvider();
     }
 

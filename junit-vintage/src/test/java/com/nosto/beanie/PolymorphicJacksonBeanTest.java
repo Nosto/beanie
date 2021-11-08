@@ -9,8 +9,7 @@
  */
 package com.nosto.beanie;
 
-import static org.junit.Assert.assertEquals;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -23,21 +22,21 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 /**
  * @author ollik1
  */
-public class PolymorphicJacksonBeanTest extends AbstractJacksonBeanTest<PolymorphicJacksonBeanTest.Base, PolymorphicJacksonBeanTest.Concrete1> {
+public class PolymorphicJacksonBeanTest extends AbstractJacksonBeanTest<PolymorphicJacksonBeanTest.Concrete1> {
 
     public PolymorphicJacksonBeanTest() {
-        super(Base.class, Concrete1.class);
+        super(Concrete1.class);
     }
 
     @Test
     public void polymorphicDeserialization() throws JsonProcessingException {
         Base value = getMapper().readValue("{\"type\":\"t1\",\"x\":\"foo\"}", Base.class);
-        assertEquals(Concrete1.class, value.getClass());
-        assertEquals("foo", value.getX());
+        Assert.assertEquals(Concrete1.class, value.getClass());
+        Assert.assertEquals("foo", value.getX());
     }
 
     @Override
-    protected BeanieProvider getBeanieProvider() {
+    public BeanieProvider getBeanieProvider() {
         return new DefaultBeanieProvider(mapper -> mapper.registerSubtypes(Concrete1.class));
     }
 
