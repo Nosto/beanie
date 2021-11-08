@@ -12,11 +12,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/beanie-annotations" />
             <option value="$PROJECT_DIR$/beanie-core" />
+            <option value="$PROJECT_DIR$/junit-jupiter" />
+            <option value="$PROJECT_DIR$/junit-vintage" />
           </set>
         </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
       </GradleProjectSettings>
     </option>
   </component>

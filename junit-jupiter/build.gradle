@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    implementation project(':beanie-core')
+    implementation(platform('org.junit:junit-bom:5.8.1'))
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter'
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter-params'
+    implementation group: 'org.reflections', name: 'reflections', version: '0.9.12'
+}

@@ -35,7 +35,7 @@ allprojects { project ->
     apply plugin: "com.dorongold.task-tree"
 
     group 'com.nosto'
-    version '1.0.9'
+    version '2.0.0'
 
     repositories {
         mavenCentral()

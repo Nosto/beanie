@@ -28,7 +28,7 @@ import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 
 @RunWith(Parameterized.class)
-public abstract class JacksonBeanTest extends AbstractJacksonBeanTest<JacksonBean, JacksonBean> {
+public abstract class JacksonBeanTest extends AbstractJacksonBeanTest<JacksonBean> {
 
     private static final Logger logger = LogManager.getLogger(JacksonBeanTest.class);
     private static final Classes CLASSES;
@@ -38,14 +38,8 @@ public abstract class JacksonBeanTest extends AbstractJacksonBeanTest<JacksonBea
         CLASSES = reflections::getSubTypesOf;
     }
 
-    /**
-     * @param deserClass    Base class for polymorphic deserialization or
-     *                      the concrete class for no polymorphic deserialization is used.
-     * @param concreteClass Class to be tested
-     * @param testName      The name of the test case, needed only for a clean {@link java.text.MessageFormat}
-     */
-    public JacksonBeanTest(Class<? extends JacksonBean> deserClass, Class<? extends JacksonBean> concreteClass, @SuppressWarnings("unused") String testName) {
-        super(deserClass, concreteClass);
+    public JacksonBeanTest(Class<? extends JacksonBean> concreteClass, @SuppressWarnings("unused") String testName) {
+        super(concreteClass);
     }
 
     @Parameterized.Parameters(name = "{1}")

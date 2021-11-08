@@ -15,46 +15,48 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * @author mridang
+ * Test that the test suite catches issues where getter
+ * returns different value than was given in constructor.
+ *
+ * @author ollik1
  */
-public class MixedPropertyNamingStrategyTest extends AbstractJacksonBeanTest<MixedPropertyNamingStrategyTest.TestBean, MixedPropertyNamingStrategyTest.TestBean> {
+public class InconsistentPropertyNamesTest extends AbstractJacksonBeanTest<InconsistentPropertyNamesTest.TestBean> {
 
-    public MixedPropertyNamingStrategyTest() {
+    public InconsistentPropertyNamesTest() {
         super(TestBean.class);
     }
 
     @SuppressWarnings("EmptyMethod")
     @Test(expected = AssertionError.class)
     @Override
-    public void namingStrategy() {
-        super.namingStrategy();
+    public void serde() {
+        super.serde();
     }
 
     @Override
-    protected BeanieProvider getBeanieProvider() {
+    public BeanieProvider getBeanieProvider() {
         return new DefaultBeanieProvider();
     }
 
-    @SuppressWarnings("QuestionableName")
     public static class TestBean extends AbstractTestBean {
-
         private final String foo;
+        @SuppressWarnings({"FieldCanBeLocal", "UnusedVariable", "unused"})
         private final String bar;
 
         @JsonCreator
-        public TestBean(@JsonProperty("fo_o") String foo, @JsonProperty("b_Ar") String bar) {
+        public TestBean(@JsonProperty("foo") String foo, @JsonProperty("bar") String bar) {
             this.foo = foo;
             this.bar = bar;
         }
 
-        @JsonProperty("fo_o")
-        public String getFo() {
+        @SuppressWarnings("unused")
+        public String getFoo() {
             return foo;
         }
 
-        @JsonProperty("b_Ar")
+        @SuppressWarnings("unused")
         public String getBar() {
-            return bar;
+            return foo; // "accidentally" return the wrong value
         }
     }
 }

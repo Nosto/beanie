@@ -11,4 +11,6 @@
 rootProject.name = 'beanie'
 include 'beanie-annotations'
 include 'beanie-core'
+include 'junit-vintage'
+include 'junit-jupiter'
 

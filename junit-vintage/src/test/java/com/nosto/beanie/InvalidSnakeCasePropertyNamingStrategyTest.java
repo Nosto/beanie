@@ -7,56 +7,53 @@
  *  accordance with the terms of the agreement you entered into with
  *  Nosto Solutions Ltd.
  */
+
 package com.nosto.beanie;
 
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-/**
- * Test that the test suite catches issues where getter
- * returns different value than was given in constructor.
- *
- * @author ollik1
- */
-public class InconsistentPropertyNamesTest extends AbstractJacksonBeanTest<InconsistentPropertyNamesTest.TestBean, InconsistentPropertyNamesTest.TestBean> {
-
-    public InconsistentPropertyNamesTest() {
+public class InvalidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBeanTest<InvalidSnakeCasePropertyNamingStrategyTest.TestBean> {
+    public InvalidSnakeCasePropertyNamingStrategyTest() {
         super(TestBean.class);
     }
 
     @SuppressWarnings("EmptyMethod")
     @Test(expected = AssertionError.class)
     @Override
-    public void serde() {
-        super.serde();
+    public void namingStrategy() {
+        super.namingStrategy();
     }
 
     @Override
-    protected BeanieProvider getBeanieProvider() {
+    public BeanieProvider getBeanieProvider() {
         return new DefaultBeanieProvider();
     }
 
+    @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
     public static class TestBean extends AbstractTestBean {
-        private final String foo;
-        @SuppressWarnings({"FieldCanBeLocal", "UnusedVariable", "unused"})
-        private final String bar;
+
+        private final String propertyA;
+        private final String propertyB;
 
         @JsonCreator
-        public TestBean(@JsonProperty("foo") String foo, @JsonProperty("bar") String bar) {
-            this.foo = foo;
-            this.bar = bar;
+        public TestBean(@JsonProperty("propertyA") String propertyA, @JsonProperty("propertyB") String propertyB) {
+            this.propertyA = propertyA;
+            this.propertyB = propertyB;
         }
 
         @SuppressWarnings("unused")
-        public String getFoo() {
-            return foo;
+        public String getPropertyA() {
+            return propertyA;
         }
 
         @SuppressWarnings("unused")
-        public String getBar() {
-            return foo; // "accidentally" return the wrong value
+        public String getPropertyB() {
+            return propertyB;
         }
     }
 }
