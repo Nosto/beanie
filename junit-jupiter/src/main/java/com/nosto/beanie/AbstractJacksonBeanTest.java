@@ -103,7 +103,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
      */
     @ParameterizedTest
     @MethodSource
-    public void serde(Class<T> deserClass, Class<T> concreteClass) {
+    public void serde(Class<T> concreteClass) {
         testSerde(concreteClass);
     }
 
@@ -121,7 +121,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
      */
     @ParameterizedTest
     @MethodSource
-    public void serdeCollection(Class<T> deserClass, Class<T> concreteClass) {
+    public void serdeCollection(Class<T> concreteClass) {
         testSerdeCollection(concreteClass);
     }
 
@@ -130,7 +130,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
      */
     @ParameterizedTest
     @MethodSource
-    public void serdeCollectionAsWell(Class<T> deserClass, Class<T> concreteClass) {
+    public void serdeCollectionAsWell(Class<T> concreteClass) {
         testSerdeCollectionAsWell(concreteClass);
     }
 

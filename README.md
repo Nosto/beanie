@@ -64,7 +64,7 @@ import com.nosto.beanie.JacksonBean;
 public class CheckMyBeansTest extends AbstractJacksonBeanTest<JacksonBean> {
 
     @Override
-    protected BeanieProvider getBeanieProvider() {
+    public BeanieProvider getBeanieProvider() {
         return JsonMapper::new;
     }
 }
