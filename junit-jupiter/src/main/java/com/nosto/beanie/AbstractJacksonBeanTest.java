@@ -24,7 +24,6 @@ import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SuppressWarnings({"Since15", "JavaUtilDate", "UseOfObsoleteDateTimeApi", "RedundantSuppression"})
@@ -91,7 +90,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
     }
 
     /**
-     * Assert all properties have an equivalent {@link JsonCreator} parameter
+     * @see ConstructorParametersTest#testConstructorParameters(Class)
      */
     @ParameterizedTest
     @MethodSource

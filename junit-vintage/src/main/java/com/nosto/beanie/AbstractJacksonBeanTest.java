@@ -20,7 +20,6 @@ import java.util.function.Supplier;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.Test;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SuppressWarnings({"Since15", "JavaUtilDate", "UseOfObsoleteDateTimeApi", "RedundantSuppression"})
@@ -51,7 +50,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * Assert all properties have an equivalent {@link JsonCreator} parameter
+     * @see ConstructorParametersTest#testConstructorParameters(Class)
      */
     @Test
     public void constructorParameters() {
@@ -99,7 +98,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * All fields should be final
+     * @see FinalPropertiesTest#testFinalProperties(Class) 
      */
     @Test
     public void finalProperties() {
