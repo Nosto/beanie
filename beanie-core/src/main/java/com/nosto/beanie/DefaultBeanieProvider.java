@@ -13,10 +13,6 @@ import java.util.function.Consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-/**
- * @author mridang
- */
 public final class DefaultBeanieProvider implements BeanieProvider {
 
     private final ObjectMapper objectMapper;

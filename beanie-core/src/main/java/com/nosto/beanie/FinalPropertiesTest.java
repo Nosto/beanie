@@ -23,6 +23,7 @@ public interface FinalPropertiesTest<T> extends BeanieTest<T> {
 
     /**
      * All fields should be final
+     * @param concreteClass the bean class to be tests as provided by Junit
      */
     default void testFinalProperties(Class<? extends T> concreteClass) {
         List<AnnotatedField> fields = getDescription(concreteClass).findProperties()

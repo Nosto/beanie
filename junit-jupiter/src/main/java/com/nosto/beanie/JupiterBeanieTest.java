@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Assertions;
 @SuppressWarnings("unused")
 public interface JupiterBeanieTest<T> extends BeanieTest<T> {
 
+    @Override
     default RandomizerRegistry getRandomizerRegistry() {
         return new CustomRandomizerRegistry();
     }

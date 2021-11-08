@@ -26,6 +26,7 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
     /**
      * Test that all properties of a bean are named with a consistent naming strategy and all property names
      * comply with the bean's naming strategy.
+     * @param concreteClass the bean class to be tests as provided by Junit
      */
     default void testNamingStrategy(Class<? extends T> concreteClass) {
         BeanDescription beanDescription = getDescription(concreteClass);

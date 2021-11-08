@@ -17,6 +17,7 @@ import org.junit.Assert;
 @SuppressWarnings("unused")
 public interface VintageBeanieTest<T> extends BeanieTest<T> {
 
+    @Override
     default RandomizerRegistry getRandomizerRegistry() {
         return new CustomRandomizerRegistry();
     }

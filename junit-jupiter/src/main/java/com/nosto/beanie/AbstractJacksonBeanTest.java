@@ -47,7 +47,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
     }
 
     public static Stream<Class<? extends JacksonBean>> getClasses() {
-        Reflections reflections = new Reflections((new ConfigurationBuilder())
+        Reflections reflections = new Reflections(new ConfigurationBuilder()
                 .setUrls(ClasspathHelper.forPackage("com.nosto")));
         return reflections.getSubTypesOf(JacksonBean.class).stream();
     }
@@ -84,13 +84,14 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
 
     @SuppressWarnings("unused")
     public static Stream<Class<? extends JacksonBean>> finalProperties() {
-        Reflections reflections = new Reflections((new ConfigurationBuilder())
+        Reflections reflections = new Reflections(new ConfigurationBuilder()
                 .setUrls(ClasspathHelper.forPackage("com.nosto")));
         return reflections.getSubTypesOf(JacksonBean.class).stream();
     }
 
     /**
-     * @see ConstructorParametersTest#testConstructorParameters(Class)
+     * For more information @see ConstructorParametersTest#testConstructorParameters(Class)
+     * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
     @MethodSource
@@ -99,7 +100,8 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
     }
 
     /**
-     * @see SerdeKosherTest#testSerde(Class)
+     * For more information @see SerdeKosherTest#testSerde(Class)
+     * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
     @MethodSource
@@ -108,7 +110,8 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
     }
 
     /**
-     * @see NamingStrategyTest#testNamingStrategy(Class)
+     * For more information @see NamingStrategyTest#testNamingStrategy(Class)
+     * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
     @MethodSource
@@ -117,7 +120,8 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
     }
 
     /**
-     * @see CollectionHandlingTest#testSerdeCollection(Class)
+     * For more information @see CollectionHandlingTest#testSerdeCollection(Class)
+     * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
     @MethodSource
@@ -126,7 +130,8 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
     }
 
     /**
-     * @see CollectionHandlingTest#testSerdeCollectionAsWell(Class)
+     * For more information @see CollectionHandlingTest#testSerdeCollectionAsWell(Class)
+     * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
     @MethodSource
@@ -135,7 +140,8 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
     }
 
     /**
-     * @see NoSettersTest#testNoSetters(Class)
+     * For more information @see NoSettersTest#testNoSetters(Class)
+     * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
     @MethodSource
@@ -144,7 +150,8 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
     }
 
     /**
-     * @see FinalPropertiesTest#testFinalProperties(Class)
+     * For more information @see FinalPropertiesTest#testFinalProperties(Class)
+     * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
     @MethodSource

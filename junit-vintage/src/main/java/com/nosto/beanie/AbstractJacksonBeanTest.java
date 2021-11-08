@@ -50,7 +50,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * @see ConstructorParametersTest#testConstructorParameters(Class)
+     * For more information @see ConstructorParametersTest#testConstructorParameters(Class)
      */
     @Test
     public void constructorParameters() {
@@ -58,7 +58,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * @see SerdeKosherTest#testSerde(Class)
+     * For more information @see SerdeKosherTest#testSerde(Class)
      */
     @Test
     public void serde() {
@@ -66,7 +66,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * @see NamingStrategyTest#testNamingStrategy(Class)
+     * For more information @see NamingStrategyTest#testNamingStrategy(Class)
      */
     @Test
     public void namingStrategy() {
@@ -74,7 +74,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * @see CollectionHandlingTest#testSerdeCollection(Class)
+     * For more information @see CollectionHandlingTest#testSerdeCollection(Class)
      */
     @Test
     public void serdeCollection() {
@@ -82,7 +82,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * @see CollectionHandlingTest#testSerdeCollectionAsWell(Class)
+     * For more information @see CollectionHandlingTest#testSerdeCollectionAsWell(Class)
      */
     @Test
     public void serdeCollectionAsWell() {
@@ -90,7 +90,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * @see NoSettersTest#testNoSetters(Class)
+     * For more information @see NoSettersTest#testNoSetters(Class)
      */
     @Test
     public void noSetters() {
@@ -98,7 +98,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * @see FinalPropertiesTest#testFinalProperties(Class) 
+     * For more information @see FinalPropertiesTest#testFinalProperties(Class) 
      */
     @Test
     public void finalProperties() {
