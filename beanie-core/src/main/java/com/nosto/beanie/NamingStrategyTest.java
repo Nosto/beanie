@@ -12,6 +12,7 @@ package com.nosto.beanie;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -64,7 +65,7 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
         Class<PropertyNamingStrategy> propertyNamingStrategy = cases.keySet()
                 .stream()
                 .findAny()
-                .orElseThrow();
+                .orElseThrow(() -> new NoSuchElementException("No value present"));
 
         assertEquals(beanPropertyNamingStrategy, propertyNamingStrategy);
     }
