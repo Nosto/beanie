@@ -18,6 +18,8 @@ import org.jeasy.random.annotation.Exclude;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.nosto.beanie.JacksonBean;
+
 public class ForceAllNonPrimitivesAsNullRandomizerRegistryTest {
 
     @Test
@@ -28,7 +30,8 @@ public class ForceAllNonPrimitivesAsNullRandomizerRegistryTest {
         Assert.assertNull(easyRandom.nextObject(TestBean.class).shouldBeNull);
     }
 
-    private static class TestBean {
+    @SuppressWarnings("all")
+    private static class TestBean extends JacksonBean {
 
         @Nullable
         @Exclude
