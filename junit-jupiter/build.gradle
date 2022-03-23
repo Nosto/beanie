@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation project(':beanie-core')
+    api project(':beanie-core')
     implementation(platform('org.junit:junit-bom:5.8.1'))
     implementation group: 'org.junit.jupiter', name: 'junit-jupiter'
     implementation group: 'org.junit.jupiter', name: 'junit-jupiter-params'

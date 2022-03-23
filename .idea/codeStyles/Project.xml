@@ -8,7 +8,7 @@
       <option name="PACKAGES_TO_USE_IMPORT_ON_DEMAND">
         <value>
           <package name="java.awt" withSubpackages="false" static="false" />
-          <package name="import org.hamcrest.CoreMatchers" withSubpackages="true" static="false" />
+          <package name="org.hamcrest.CoreMatchers" withSubpackages="true" static="false" />
           <package name="javax.swing" withSubpackages="false" static="false" />
         </value>
       </option>
@@ -39,7 +39,6 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="JAVA">
-      <option name="WRAP_FIRST_METHOD_IN_CALL_CHAIN" value="true" />
       <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
       <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
       <option name="KEEP_SIMPLE_LAMBDAS_IN_ONE_LINE" value="true" />
