@@ -4,5 +4,5 @@ plugins {
 
 dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.11.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.13.2'
 }

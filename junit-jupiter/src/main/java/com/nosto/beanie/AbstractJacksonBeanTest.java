@@ -91,6 +91,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
 
     /**
      * For more information @see ConstructorParametersTest#testConstructorParameters(Class)
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
@@ -101,6 +102,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
 
     /**
      * For more information @see SerdeKosherTest#testSerde(Class)
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
@@ -111,6 +113,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
 
     /**
      * For more information @see NamingStrategyTest#testNamingStrategy(Class)
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
@@ -121,6 +124,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
 
     /**
      * For more information @see CollectionHandlingTest#testSerdeCollection(Class)
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
@@ -131,6 +135,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
 
     /**
      * For more information @see CollectionHandlingTest#testSerdeCollectionAsWell(Class)
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
@@ -141,6 +146,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
 
     /**
      * For more information @see NoSettersTest#testNoSetters(Class)
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest
@@ -151,6 +157,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
 
     /**
      * For more information @see FinalPropertiesTest#testFinalProperties(Class)
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     @ParameterizedTest

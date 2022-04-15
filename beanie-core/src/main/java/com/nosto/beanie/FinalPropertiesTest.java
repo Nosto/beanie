@@ -13,7 +13,6 @@ package com.nosto.beanie;
 import java.lang.reflect.Modifier;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.introspect.AnnotatedField;
@@ -23,6 +22,7 @@ public interface FinalPropertiesTest<T> extends BeanieTest<T> {
 
     /**
      * All fields should be final
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     default void testFinalProperties(Class<? extends T> concreteClass) {

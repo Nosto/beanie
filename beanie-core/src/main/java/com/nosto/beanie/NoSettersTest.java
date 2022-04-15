@@ -19,6 +19,7 @@ public interface NoSettersTest<T> extends BeanieTest<T> {
 
     /**
      * Check that there is no setters
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     default void testNoSetters(Class<? extends T> concreteClass) {

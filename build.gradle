@@ -35,7 +35,7 @@ allprojects { project ->
     apply plugin: "com.dorongold.task-tree"
 
     group 'com.nosto.beanie'
-    version '3.1.0'
+    version '3.1.1'
 
     repositories {
         mavenCentral()
@@ -45,13 +45,13 @@ allprojects { project ->
     }
 
     dependencies {
-        testImplementation group: 'junit', name: 'junit', version: '4.12'
-        testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.2.0'
-        testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.2.0'
-        compileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '3.1.3'
-        testCompileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '3.1.3'
-        errorprone group: 'com.uber.nullaway', name: 'nullaway', version: '0.9.1'
-        errorprone group: 'com.google.errorprone', name: 'error_prone_core', version: '2.6.0'
+        testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+        testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.8.2'
+        testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.8.2'
+        compileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.6.0'
+        testCompileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.6.0'
+        errorprone group: 'com.uber.nullaway', name: 'nullaway', version: '0.9.6'
+        errorprone group: 'com.google.errorprone', name: 'error_prone_core', version: '2.12.1'
         spotbugsPlugins group: 'com.h3xstream.findsecbugs', name: 'findsecbugs-plugin', version: '1.10.1'
     }
 
@@ -69,7 +69,7 @@ allprojects { project ->
     // I'm not sure why the tool version is defined here and it isn't managed as a
     // dependency.
     jacoco {
-        toolVersion = "0.8.5"
+        toolVersion = "0.8.8"
     }
 
     // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
@@ -117,7 +117,7 @@ allprojects { project ->
     // dependency.
     spotbugs {
         //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
-        toolVersion = '4.0.2'
+        toolVersion = '4.6.0'
         //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
         ignoreFailures = true
         //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
@@ -149,7 +149,7 @@ allprojects { project ->
     // I'm not sure why the tool version is defined here and it isn't managed as a
     // dependency.
     checkstyle {
-        toolVersion "7.6.1"
+        toolVersion "10.1"
         config rootProject.resources.text.fromFile("gradle/config/checkstyle/checkstyle.xml")
     }
 
