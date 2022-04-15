@@ -35,7 +35,7 @@ allprojects { project ->
     apply plugin: "com.dorongold.task-tree"
 
     group 'com.nosto.beanie'
-    version '3.1.1'
+    version '3.1.2'
 
     repositories {
         mavenCentral()

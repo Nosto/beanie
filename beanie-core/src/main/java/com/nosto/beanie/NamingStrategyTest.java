@@ -40,34 +40,55 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
 
         @SuppressWarnings("unchecked")
         Class<PropertyNamingStrategy> configuredNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
+                .map(namingStrategy -> {
+                    if (namingStrategy.getClass().equals(LowerCamelCaseStrategy.class)) {
+                        return PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
+                    }
+                    if (namingStrategy.getClass().equals(UpperCamelCaseStrategy.class)) {
+                        return PropertyNamingStrategy.UPPER_CAMEL_CASE.getClass();
+                    }
+                    if (namingStrategy.getClass().equals(SnakeCaseStrategy.class)) {
+                        return PropertyNamingStrategy.SNAKE_CASE.getClass();
+                    }
+                    if (namingStrategy.getClass().equals(LowerCaseStrategy.class)) {
+                        return PropertyNamingStrategy.LOWER_CASE.getClass();
+                    }
+                    if (namingStrategy.getClass().equals(KebabCaseStrategy.class)) {
+                        return PropertyNamingStrategy.KEBAB_CASE.getClass();
+                    }
+                    if (namingStrategy.getClass().equals(LowerDotCaseStrategy.class)) {
+                        return PropertyNamingStrategy.LOWER_DOT_CASE.getClass();
+                    }
+                    return namingStrategy.getClass();
+                })
                 // Required to get around compilation error
-                .map(s -> (Class<PropertyNamingStrategy>) s.getClass())
+                .map(klass -> (Class<PropertyNamingStrategy>) klass)
                 .orElse(PropertyNamingStrategy.class);
 
         @SuppressWarnings("unchecked")
         Class<PropertyNamingStrategy> beanPropertyNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
                 .map(JsonNaming::value)
                 // Required to get around compilation error
-                .map(aClass -> {
-                    if (aClass.equals(LowerCamelCaseStrategy.class)) {
+                .map(klass -> {
+                    if (klass.equals(LowerCamelCaseStrategy.class)) {
                         return PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
                     }
-                    if (aClass.equals(UpperCamelCaseStrategy.class)) {
+                    if (klass.equals(UpperCamelCaseStrategy.class)) {
                         return PropertyNamingStrategy.UPPER_CAMEL_CASE.getClass();
                     }
-                    if (aClass.equals(SnakeCaseStrategy.class)) {
+                    if (klass.equals(SnakeCaseStrategy.class)) {
                         return PropertyNamingStrategy.SNAKE_CASE.getClass();
                     }
-                    if (aClass.equals(LowerCaseStrategy.class)) {
+                    if (klass.equals(LowerCaseStrategy.class)) {
                         return PropertyNamingStrategy.LOWER_CASE.getClass();
                     }
-                    if (aClass.equals(KebabCaseStrategy.class)) {
+                    if (klass.equals(KebabCaseStrategy.class)) {
                         return PropertyNamingStrategy.KEBAB_CASE.getClass();
                     }
-                    if (aClass.equals(LowerDotCaseStrategy.class)) {
+                    if (klass.equals(LowerDotCaseStrategy.class)) {
                         return PropertyNamingStrategy.LOWER_DOT_CASE.getClass();
                     }
-                    return aClass;
+                    return klass;
                 })
                 .map(s -> (Class<PropertyNamingStrategy>) s)
                 .orElse(configuredNamingStrategy);
