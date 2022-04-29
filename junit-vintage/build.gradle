@@ -1,9 +1,12 @@
 plugins {
-    id 'java'
+    id 'myproject.java-conventions'
 }
 
 dependencies {
     api project(':beanie-core')
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.8.2'
+    testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.8.2'
     implementation group: 'junit', name: 'junit', version: '4.13.2'
+    implementation group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.6.0'
     implementation group: 'org.reflections', name: 'reflections', version: '0.10.2'
 }
