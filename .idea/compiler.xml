@@ -31,14 +31,19 @@
         </processorPath>
         <module name="beanie.junit-vintage.test" />
         <module name="beanie.main" />
-        <module name="beanie.junit-vintage.main" />
         <module name="beanie.beanie-core.test" />
-        <module name="beanie.beanie-annotations.test" />
-        <module name="beanie.junit-jupiter.test" />
-        <module name="beanie.junit-jupiter.main" />
-        <module name="beanie.beanie-annotations.main" />
+        <module name="beanie.testFixtures" />
         <module name="beanie.beanie-core.main" />
         <module name="beanie.test" />
+        <module name="beanie.junit-vintage.testFixtures" />
+        <module name="beanie.junit-vintage.main" />
+        <module name="beanie.beanie-annotations.testFixtures" />
+        <module name="beanie.beanie-core.testFixtures" />
+        <module name="beanie.beanie-annotations.test" />
+        <module name="beanie.junit-jupiter.test" />
+        <module name="beanie.junit-jupiter.testFixtures" />
+        <module name="beanie.junit-jupiter.main" />
+        <module name="beanie.beanie-annotations.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />

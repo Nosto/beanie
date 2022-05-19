@@ -30,58 +30,39 @@ publishing {
         }
     }
     publications {
-        //noinspection GroovyAssignabilityCheck
         maven(MavenPublication) {
-            //noinspection GroovyAssignabilityCheck
             from components.java
 
             pom {
-                //noinspection GroovyAssignabilityCheck
                 name = 'Beanie'
-                //noinspection GroovyAssignabilityCheck
                 description = 'A simple library to sanity-check your bean ser-deser'
-                //noinspection GroovyAssignabilityCheck
                 url = 'https://github.com/nosto/beanie'
                 licenses {
                     license {
-                        //noinspection GroovyAssignabilityCheck
                         name = 'The Apache Software License, Version 2.0'
-                        //noinspection GroovyAssignabilityCheck
                         url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
-                        //noinspection GroovyAssignabilityCheck
                         distribution = 'repo'
                     }
                 }
                 developers {
                     developer {
-                        //noinspection GroovyAssignabilityCheck
                         id = 'ollik1'
-                        //noinspection GroovyAssignabilityCheck
                         name = 'Olli Kuonanoja'
-                        //noinspection GroovyAssignabilityCheck
                         email = 'olli@nosto.com'
                     }
                     developer {
-                        //noinspection GroovyAssignabilityCheck
                         id = 'mridang'
-                        //noinspection GroovyAssignabilityCheck
                         name = 'Mridang Agarwalla'
-                        //noinspection GroovyAssignabilityCheck
                         email = 'mridang@nosto.com'
                     }
                 }
                 scm {
-                    //noinspection GroovyAssignabilityCheck
                     connection = 'scm:git:git://github.com/nosto/beanie.git'
-                    //noinspection GroovyAssignabilityCheck
                     developerConnection = 'scm:git:ssh://github.com/nosto/beanie.git'
-                    //noinspection GroovyAssignabilityCheck
                     url = 'https://github.com/nosto/beanie'
                 }
                 issueManagement {
-                    //noinspection GroovyAssignabilityCheck
                     system = "Github"
-                    //noinspection GroovyAssignabilityCheck
                     url = "https://github.com/nosto/beanie/issues"
                 }
             }
