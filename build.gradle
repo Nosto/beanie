@@ -1,5 +1,3 @@
-//file:noinspection GrUnresolvedAccess
-//file:noinspection GroovyAssignabilityCheck
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 buildscript {
@@ -7,9 +5,9 @@ buildscript {
         google()
         mavenCentral()
         gradlePluginPortal()
+//        mavenLocal()
     }
     dependencies {
-        classpath "org.github.ngbinh.scalastyle:gradle-scalastyle-plugin_2.11:1.0.1"
         classpath "com.diffplug.spotless:spotless-plugin-gradle:5.12.4"
         classpath "gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.7.1"
         classpath "net.ltgt.gradle:gradle-errorprone-plugin:2.0.1"
@@ -19,11 +17,8 @@ buildscript {
 }
 
 allprojects { project ->
-
     apply plugin: 'java'
     apply plugin: 'checkstyle'
-    //apply plugin: 'scalaStyle'
-    //apply plugin: 'scala'
     apply plugin: "com.github.spotbugs"
     apply plugin: 'maven-publish'
     apply plugin: 'java-library'
@@ -34,24 +29,34 @@ allprojects { project ->
     apply plugin: "jacoco"
 
     group 'com.nosto'
-    version '1.0.9'
+    version '1.1.0'
 
     repositories {
+//        mavenLocal()
         mavenCentral()
+        gradlePluginPortal()
+        google()
         maven {
-            url 'https://maven.onehippo.com/maven2/'
+            url 'https://repo.nos.to/content/repositories/NostoDependencies/'
+            credentials {
+                username "$mavenUser"
+                password "$mavenPassword"
+            }
         }
     }
 
     dependencies {
-        testImplementation group: 'junit', name: 'junit', version: '4.12'
-        testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.2.0'
-        testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.2.0'
-        compileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '3.1.3'
-        testCompileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '3.1.3'
-        errorprone group: 'com.uber.nullaway', name: 'nullaway', version: '0.9.1'
-        errorprone group: 'com.google.errorprone', name: 'error_prone_core', version: '2.6.0'
-        spotbugsPlugins group: 'com.h3xstream.findsecbugs', name: 'findsecbugs-plugin', version: '1.10.1'
+        implementation group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.8.6'
+
+        testImplementation group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.8.6'
+        testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+        testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.11.0'
+        testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.11.0'
+
+        errorprone group: 'com.uber.nullaway', name: 'nullaway', version: '0.11.2'
+        errorprone group: 'com.google.errorprone', name: 'error_prone_core', version: '2.30.0'
+
+        spotbugsPlugins group: 'com.h3xstream.findsecbugs', name: 'findsecbugs-plugin', version: '1.13.0'
     }
 
     // Configuration for the nullaway extension. The rest of the parameters must be
@@ -62,65 +67,54 @@ allprojects { project ->
         annotatedPackages.add("com.nosto")
     }
 
-// Configuration for the Scalastyle plugin. It seems that it isn't possible to define
-// the output report formats here and those seem to be defined on the individual
-// task level.
-    /*scalaStyle {
-        configLocation "project/scalastyle_config.xml"
-    }*/
-
 // Configuration for the Jacoco plugin. It seems that it isn't possible to define
 // the output report formats here and those seem to be defined on the individual
 // task level.
 // I'm not sure why the tool version is defined here and it isn't managed as a
 // dependency.
     jacoco {
-        toolVersion = "0.8.5"
+        toolVersion = "0.8.12"
     }
 
 // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
     jacocoTestReport {
         reports {
-            csv.enabled = true
-            xml.enabled = false
-            html.enabled = true
+            csv.required.set(true)
+            xml.required.set(false)
+            html.required.set(true)
         }
     }
 
     test {
         useJUnitPlatform()
-        testLogging.events.addAll([TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED])
-        reports {
-            junitXml.enabled = true
-            html.enabled = true
+        testLogging {
+            events = [TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED]
         }
-        maxParallelForks = (int) (Runtime.runtime.availableProcessors() / 2 + 1)
-        finalizedBy jacocoTestReport // report is always generated after tests run
+        reports {
+            junitXml.required.set(true)
+            html.required.set(true)
+        }
+        maxParallelForks = (Runtime.runtime.availableProcessors() / 2 + 1) as int
+        finalizedBy(tasks.named('jacocoTestReport')) // report is always generated after tests run
     }
 
     jacocoTestReport {
         dependsOn test // tests are required to run before generating the report
     }
-    
+
     javadoc {
         options.addBooleanOption('html5', true)
     }
-
-    /*scaladoc {
-        scalaDocOptions.additionalParameters = ['-no-link-warnings']
-    }*/
 
     task sourcesJar(type: Jar, dependsOn: classes) {
         archiveClassifier.set("sources")
         from sourceSets.main.allSource
     }
 
-    /*task scaladocJar(type: Jar, dependsOn: scaladoc) {
-        archiveClassifier.set("javadoc")
-        from scaladoc.destinationDir
-    }*/
-
     java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+
         withSourcesJar()
         withJavadocJar()
     }
@@ -132,7 +126,7 @@ allprojects { project ->
     // dependency.
     spotbugs {
         //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
-        toolVersion = '4.0.2'
+        toolVersion = '4.8.6'
         //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
         ignoreFailures = true
         //noinspection GroovyAccessibility,GrFinalVariableAccess,GroovyAssignabilityCheck
@@ -164,7 +158,7 @@ allprojects { project ->
     // I'm not sure why the tool version is defined here and it isn't managed as a
     // dependency.
     checkstyle {
-        toolVersion "7.6.1"
+        toolVersion "10.18.0"
         config rootProject.resources.text.fromFile("gradle/config/checkstyle/checkstyle.xml")
     }
 
@@ -172,16 +166,16 @@ allprojects { project ->
     // and must be explicitly disabled
     checkstyleMain {
         reports {
-            xml.enabled = true
-            html.enabled = false
+            xml.required.set(true)
+            html.required.set(false)
         }
     }
 
     // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
     checkstyleTest {
         reports {
-            xml.enabled = true
-            html.enabled = false
+            xml.required.set(true)
+            html.required.set(false)
         }
     }
 
@@ -190,62 +184,34 @@ allprojects { project ->
             maven {
                 name = "github"
                 url = uri("https://maven.pkg.github.com/nosto/beanie")
-                credentials(PasswordCredentials)
+                credentials {
+                    username = "$mavenUser"
+                    password = "$mavenPassword"
+                }
             }
         }
         publications {
-            //noinspection GroovyAssignabilityCheck
             maven(MavenPublication) {
-                //noinspection GroovyAssignabilityCheck
                 from components.java
 
                 pom {
-                    //noinspection GroovyAssignabilityCheck
                     name = 'Beanie'
-                    //noinspection GroovyAssignabilityCheck
                     description = 'A simple library to sanity-check your bean ser-deser'
-                    //noinspection GroovyAssignabilityCheck
                     url = 'https://github.com/nosto/beanie'
                     licenses {
                         license {
-                            //noinspection GroovyAssignabilityCheck
                             name = 'The Apache Software License, Version 2.0'
-                            //noinspection GroovyAssignabilityCheck
                             url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
-                            //noinspection GroovyAssignabilityCheck
                             distribution = 'repo'
                         }
                     }
-                    developers {
-                        developer {
-                            //noinspection GroovyAssignabilityCheck
-                            id = 'ollik1'
-                            //noinspection GroovyAssignabilityCheck
-                            name = 'Olli Kuonanoja'
-                            //noinspection GroovyAssignabilityCheck
-                            email = 'olli@nosto.com'
-                        }
-                        developer {
-                            //noinspection GroovyAssignabilityCheck
-                            id = 'mridang'
-                            //noinspection GroovyAssignabilityCheck
-                            name = 'Mridang Agarwalla'
-                            //noinspection GroovyAssignabilityCheck
-                            email = 'mridang@nosto.com'
-                        }
-                    }
                     scm {
-                        //noinspection GroovyAssignabilityCheck
                         connection = 'scm:git:git://github.com/nosto/beanie.git'
-                        //noinspection GroovyAssignabilityCheck
                         developerConnection = 'scm:git:ssh://github.com/nosto/beanie.git'
-                        //noinspection GroovyAssignabilityCheck
                         url = 'https://github.com/nosto/beanie'
                     }
                     issueManagement {
-                        //noinspection GroovyAssignabilityCheck
                         system = "Github"
-                        //noinspection GroovyAssignabilityCheck
                         url = "https://github.com/nosto/beanie/issues"
                     }
                 }
