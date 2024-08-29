@@ -3,31 +3,37 @@ plugins {
 }
 
 group 'com.nosto.beanie'
-version '3.1.2'
+version '3.2.0'
 
 java {
-    sourceCompatibility "11"
-    targetCompatibility "11"
+    sourceCompatibility = JavaVersion.toVersion("1.17")
+    targetCompatibility = JavaVersion.toVersion("1.17")
 }
 
 dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
-    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.8.2'
-    testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.8.2'
-    compileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.6.0'
-    testCompileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.6.0'
-    errorprone group: 'com.uber.nullaway', name: 'nullaway', version: '0.9.6'
-    errorprone group: 'com.google.errorprone', name: 'error_prone_core', version: '2.12.1'
-    spotbugsPlugins group: 'com.h3xstream.findsecbugs', name: 'findsecbugs-plugin', version: '1.10.1'
+    compileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.8.6'
+
+    testCompileOnly group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.8.6'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.11.0'
+    testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.11.0'
+
+    errorprone group: 'com.uber.nullaway', name: 'nullaway', version: '0.11.2'
+    errorprone group: 'com.google.errorprone', name: 'error_prone_core', version: '2.30.0'
+
+    spotbugsPlugins group: 'com.h3xstream.findsecbugs', name: 'findsecbugs-plugin', version: '1.13.0'
 }
 
 publishing {
     repositories {
-        maven {
-            name = "github"
-            url = uri("https://maven.pkg.github.com/nosto/beanie")
-            credentials(PasswordCredentials)
-        }
+        mavenLocal()
+//        maven {
+//            url 'https://repo.nos.to/content/repositories/NostoDependencies/'
+//            credentials {
+//                username "$mavenUser"
+//                password "$mavenPassword"
+//            }
+//        }
     }
     publications {
         maven(MavenPublication) {
