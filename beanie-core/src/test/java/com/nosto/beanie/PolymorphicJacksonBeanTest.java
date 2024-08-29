@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021 Nosto Solutions Ltd All Rights Reserved.
+ *  Copyright (c) 2024 Nosto Solutions Ltd All Rights Reserved.
  *
  *  This software is the confidential and proprietary information of
  *  Nosto Solutions Ltd ("Confidential Information"). You shall not
