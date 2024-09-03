@@ -26,17 +26,22 @@ dependencies {
 
 publishing {
     repositories {
-        mavenLocal()
-//        maven {
-//            url 'https://repo.nos.to/content/repositories/NostoDependencies/'
-//            credentials {
-//                username "$mavenUser"
-//                password "$mavenPassword"
-//            }
-//        }
+        maven {
+            name = "nexus"
+            url "$mavenNexusPublishingUrl"
+            credentials {
+                username "$mavenUser"
+                password "$mavenPassword"
+            }
+        }
+        maven {
+            name = "github"
+            url = uri("https://maven.pkg.github.com/nosto/beanie")
+            credentials(PasswordCredentials)
+        }
     }
     publications {
-        maven(MavenPublication) {
+        create("mavenJava", MavenPublication) {
             from components.java
 
             pom {
@@ -48,18 +53,6 @@ publishing {
                         name = 'The Apache Software License, Version 2.0'
                         url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
                         distribution = 'repo'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'ollik1'
-                        name = 'Olli Kuonanoja'
-                        email = 'olli@nosto.com'
-                    }
-                    developer {
-                        id = 'mridang'
-                        name = 'Mridang Agarwalla'
-                        email = 'mridang@nosto.com'
                     }
                 }
                 scm {
