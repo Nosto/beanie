@@ -16,8 +16,6 @@ import org.junit.Test;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 /**
  * Test that the test suite catches issues where {@link JsonCreator}
  * property names do not match with the bean property names
@@ -46,13 +44,11 @@ public class NoNullCollectionsTest extends AbstractJacksonBeanTest<NoNullCollect
         private final List<String> bars;
 
         @JsonCreator
-        @SuppressFBWarnings(value = {"EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
         public TestBean(@JsonProperty("bars") List<String> bars) {
             this.bars = bars;
         }
 
         @SuppressWarnings("unused")
-        @SuppressFBWarnings(value = {"EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
         public List<String> getBars() {
             return bars;
         }

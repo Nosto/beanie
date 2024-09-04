@@ -13,8 +13,6 @@ import java.util.function.Consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 public final class DefaultBeanieProvider implements BeanieProvider {
 
     private final ObjectMapper objectMapper;
@@ -33,7 +31,6 @@ public final class DefaultBeanieProvider implements BeanieProvider {
 
 
     @Override
-    @SuppressFBWarnings(value = {"EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
     public ObjectMapper getMapper() {
         return objectMapper;
     }

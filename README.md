@@ -15,6 +15,7 @@ Registry, [https://docs.github.com/en/packages/guides/configuring-gradle-for-use
 
 ## Usage
 
+
 ### Usage in JUnit 4 (Vintage)
 
 In order to use Beanie if you're using JUnit 4, you'll need to use the `junit-vintage` artifact.
@@ -49,7 +50,7 @@ public class CheckMyBeansTest extends AbstractJacksonBeanTest<JacksonBean> {
 
 ### Usage in JUnit 5 (Jupiter)
 
-In order to use Beanie if you're using JUnit 5, you'll need to use the `junit-jupiter` artifact.
+In order to use Beanie if you're using JUnit 5, you'll need to use the `junit-jupiter` artifact. 
 In order to get the test to be picked up and run by your test engine, you will need to
 include a test stub such as the one below into your test suite.
 

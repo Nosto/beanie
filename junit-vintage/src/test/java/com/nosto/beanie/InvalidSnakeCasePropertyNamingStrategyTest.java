@@ -18,7 +18,6 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 public class InvalidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBeanTest<InvalidSnakeCasePropertyNamingStrategyTest.TestBean> {
-
     public InvalidSnakeCasePropertyNamingStrategyTest() {
         super(TestBean.class);
     }

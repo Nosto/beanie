@@ -98,7 +98,7 @@ public abstract class AbstractJacksonBeanTest<T> implements VintageBeanieTest<T>
     }
 
     /**
-     * For more information @see FinalPropertiesTest#testFinalProperties(Class)
+     * For more information @see FinalPropertiesTest#testFinalProperties(Class) 
      */
     @Test
     public void finalProperties() {
