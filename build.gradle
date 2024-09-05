@@ -33,18 +33,10 @@ allprojects { project ->
     apply plugin: "com.dorongold.task-tree"
 
     group 'com.nosto.beanie'
-    version '3.2.0-SNAPSHOT-1725446552730'
+    version '3.2.0-SNAPSHOT-1725523842962'
 
     repositories {
         mavenCentral()
-        maven {
-            name = "nexus"
-            url = mavenNexusUrl
-            credentials {
-                username = mavenUser
-                password = mavenPassword
-            }
-        }
     }
 
     dependencies {
@@ -172,14 +164,6 @@ allprojects { project ->
 
     publishing {
         repositories {
-            maven {
-                name = "nexus"
-                url = mavenNexusUrl
-                credentials {
-                    username = mavenUser
-                    password = mavenPassword
-                }
-            }
             maven {
                 name = "github"
                 url = uri("https://maven.pkg.github.com/nosto/beanie")
