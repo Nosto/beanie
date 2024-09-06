@@ -10,10 +10,10 @@
 
 package com.nosto.beanie;
 
+import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
+
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
 
 public interface NoSettersTest<T> extends BeanieTest<T> {
 
@@ -26,7 +26,7 @@ public interface NoSettersTest<T> extends BeanieTest<T> {
         List<BeanPropertyDefinition> properties = getDescription(concreteClass).findProperties()
                 .stream()
                 .filter(BeanPropertyDefinition::hasSetter)
-                .collect(Collectors.toList());
+                .toList();
         assertTrue(properties.isEmpty(), String.format("Properties should be immutable but the following properties have setters: %s",
                 properties
                         .stream()

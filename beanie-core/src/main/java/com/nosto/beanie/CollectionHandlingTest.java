@@ -10,18 +10,15 @@
 
 package com.nosto.beanie;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import javax.annotation.Nullable;
-
+import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
+import com.nosto.beanie.jeasy.ForceAllNonPrimitivesAsNullRandomizerRegistry;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 
-import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
-import com.nosto.beanie.jeasy.ForceAllNonPrimitivesAsNullRandomizerRegistry;
+import javax.annotation.Nullable;
+import java.io.IOException;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public interface CollectionHandlingTest<T> extends BeanieTest<T> {
 
@@ -77,7 +74,7 @@ public interface CollectionHandlingTest<T> extends BeanieTest<T> {
                                 .filter(property -> property.getAccessor().getValue(actualObj) == null)
                                 .filter(property -> !property.getAccessor().hasAnnotation(Nullable.class))
                                 .map(BeanPropertyDefinition::getName)
-                                .collect(Collectors.toList());
+                                .toList();
                         assertTrue(properties.isEmpty(), "Following properties return null for collection types " + properties);
                     } catch (IOException e) {
                         throw new RuntimeException("Could not deserialize + " + json, e);

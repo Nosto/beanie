@@ -10,13 +10,13 @@
 
 package com.nosto.beanie;
 
+import com.fasterxml.jackson.databind.introspect.AnnotatedField;
+import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
+
 import java.lang.reflect.Modifier;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.databind.introspect.AnnotatedField;
-import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
 
 public interface FinalPropertiesTest<T> extends BeanieTest<T> {
 
@@ -31,7 +31,7 @@ public interface FinalPropertiesTest<T> extends BeanieTest<T> {
                 .map(BeanPropertyDefinition::getField)
                 .filter(Objects::nonNull)
                 .filter(x -> !Modifier.isFinal(x.getModifiers()))
-                .collect(Collectors.toList());
+                .toList();
         assertTrue(fields.isEmpty(), String.format("The following fields are not final: %s",
                 fields.stream()
                         .map(AnnotatedField::getName)
