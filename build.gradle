@@ -6,8 +6,11 @@ group 'com.nosto.beanie'
 version '3.2.0'
 
 java {
-    sourceCompatibility = JavaVersion.toVersion("1.17")
-    targetCompatibility = JavaVersion.toVersion("1.17")
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    withSourcesJar()
+    withJavadocJar()
 }
 
 dependencies {
@@ -26,14 +29,6 @@ dependencies {
 
 publishing {
     repositories {
-        maven {
-            name = "nexus"
-            url "$mavenNexusPublishingUrl"
-            credentials {
-                username "$mavenUser"
-                password "$mavenPassword"
-            }
-        }
         maven {
             name = "github"
             url = uri("https://maven.pkg.github.com/nosto/beanie")
