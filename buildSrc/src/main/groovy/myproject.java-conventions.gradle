@@ -63,7 +63,7 @@ nullaway {
 // I'm not sure why the tool version is defined here and it isn't managed as a
 // dependency.
 jacoco {
-    toolVersion = "0.8.8"
+    toolVersion = "0.8.10"
 }
 
 // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
