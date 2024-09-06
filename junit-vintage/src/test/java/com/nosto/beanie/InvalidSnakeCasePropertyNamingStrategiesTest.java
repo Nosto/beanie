@@ -14,12 +14,12 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-public class InvalidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBeanTest<InvalidSnakeCasePropertyNamingStrategyTest.TestBean> {
+public class InvalidSnakeCasePropertyNamingStrategiesTest extends AbstractJacksonBeanTest<InvalidSnakeCasePropertyNamingStrategiesTest.TestBean> {
 
-    public InvalidSnakeCasePropertyNamingStrategyTest() {
+    public InvalidSnakeCasePropertyNamingStrategiesTest() {
         super(TestBean.class);
     }
 
@@ -35,7 +35,7 @@ public class InvalidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonB
         return new DefaultBeanieProvider();
     }
 
-    @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+    @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
     public static class TestBean extends AbstractTestBean {
 
         private final String propertyA;

@@ -30,15 +30,15 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 public class ConstructorNullPointerTest implements JupiterBeanieTest<AbstractTestBean>
         , ConstructorParametersTest<AbstractTestBean> {
 
+    @SuppressWarnings("unused")
+    public static Stream<Class<? extends AbstractTestBean>> constructorParameters() {
+        return Stream.of(AbstractTestBean.class);
+    }
+
     @ParameterizedTest
     @MethodSource
     public void constructorParameters(Class<AbstractTestBean> concreteClass) {
         testConstructorParameters(concreteClass);
-    }
-
-    @SuppressWarnings("unused")
-    public static Stream<Class<? extends AbstractTestBean>> constructorParameters() {
-        return Stream.of(AbstractTestBean.class);
     }
 
     public static class TestBean extends AbstractTestBean {
