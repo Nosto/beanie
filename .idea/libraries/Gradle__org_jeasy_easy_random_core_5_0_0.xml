@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jeasy:easy-random-core:5.0.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.jeasy" artifactId="easy-random-core" version="5.0.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jeasy/easy-random-core/5.0.0/2cb40d3bddaa900cfa3587cc4528f38ad669527a/easy-random-core-5.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
