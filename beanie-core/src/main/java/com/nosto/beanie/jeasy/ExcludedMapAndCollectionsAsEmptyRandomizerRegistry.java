@@ -40,6 +40,7 @@ public class ExcludedMapAndCollectionsAsEmptyRandomizerRegistry implements Rando
     private EasyRandomParameters easyRandomParameters;
 
     @Override
+    @SuppressFBWarnings(value = {"EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
     public void init(EasyRandomParameters easyRandomParameters) {
         this.easyRandomParameters = easyRandomParameters;
     }

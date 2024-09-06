@@ -29,6 +29,7 @@ public interface CollectionHandlingTest<T> extends BeanieTest<T> {
      * Generate multiple random objects of the given class
      * and assert serializing and deserializing back returns
      * the original object.
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     default void testSerdeCollection(Class<? extends T> concreteClass) {
@@ -55,6 +56,7 @@ public interface CollectionHandlingTest<T> extends BeanieTest<T> {
      * Generate multiple random objects of the given class
      * and assert serializing and deserializing back returns
      * the original object.
+     *
      * @param concreteClass the bean class to be tests as provided by Junit
      */
     default void testSerdeCollectionAsWell(Class<? extends T> concreteClass) {
