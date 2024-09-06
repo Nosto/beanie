@@ -167,10 +167,7 @@ allprojects { project ->
             maven {
                 name = "github"
                 url = uri("https://maven.pkg.github.com/nosto/beanie")
-                credentials {
-                    username = mavenUser
-                    password = mavenPassword
-                }
+                credentials(PasswordCredentials)
             }
         }
         publications {
