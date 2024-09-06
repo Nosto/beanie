@@ -40,6 +40,16 @@ dependencies {
     //checkstyle group: 'io.spring.nohttp', name: 'nohttp-checkstyle', version: '0.0.10'
 }
 
+/*
+ *  Copyright (c) 2024 Nosto Solutions Ltd All Rights Reserved.
+ *
+ *  This software is the confidential and proprietary information of
+ *  Nosto Solutions Ltd ("Confidential Information"). You shall not
+ *  disclose such Confidential Information and shall use it only in
+ *  accordance with the terms of the agreement you entered into with
+ *  Nosto Solutions Ltd.
+ */
+
 // Configuration for the nullaway extension. The rest of the parameters must be
 // specified on the java-compile tasks. The only option that be specified here
 // is the name of the root package to be analysed.
@@ -171,12 +181,8 @@ checkstyleMain {
 // We only need the XML report so that the CI tools can parse it. The HTML isn't needed.
 checkstyleTest {
     reports {
-        xml {
-            enabled true
-        }
-        html {
-            enabled false
-        }
+        xml.required.set(true)
+        html.required.set(false)
     }
 }
 
