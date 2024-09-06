@@ -1,5 +1,5 @@
 plugins {
-    id 'myproject.java-conventions'
+    id 'java'
 }
 
 dependencies {
@@ -11,7 +11,7 @@ dependencies {
     api group: 'org.jeasy', name: 'easy-random-core', version: '5.0.0'
     api group: 'org.apache.commons', name: 'commons-lang3', version: '3.16.0'
     api group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.3'
-    api group: 'javax.annotation', name: 'jsr305', version: '1.0'
+    api group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
 
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.11.0'
