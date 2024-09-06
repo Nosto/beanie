@@ -38,13 +38,13 @@
         <module name="beanie.junit-vintage.main" />
         <module name="beanie.beanie-core.test" />
         <module name="beanie.beanie-annotations.test" />
-        <module name="beanie.junit-jupiter.test" />
         <module name="beanie.junit-jupiter.main" />
+        <module name="beanie.junit-jupiter.test" />
         <module name="beanie.beanie-annotations.main" />
         <module name="beanie.beanie-core.main" />
         <module name="beanie.test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="21" />
   </component>
 </project>

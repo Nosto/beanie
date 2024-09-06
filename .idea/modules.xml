@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie-annotations/beanie.beanie-annotations.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie-annotations/beanie.beanie-annotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie-annotations/beanie.beanie-annotations.main.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie-annotations/beanie.beanie-annotations.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie-annotations/beanie.beanie-annotations.test.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie-annotations/beanie.beanie-annotations.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie-core/beanie.beanie-core.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie-core/beanie.beanie-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie-core/beanie.beanie-core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie-core/beanie.beanie-core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie-core/beanie.beanie-core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie-core/beanie.beanie-core.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie.buildSrc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie.buildSrc.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie.buildSrc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie.buildSrc.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/junit-jupiter/beanie.junit-jupiter.iml" filepath="$PROJECT_DIR$/.idea/modules/junit-jupiter/beanie.junit-jupiter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/junit-jupiter/beanie.junit-jupiter.main.iml" filepath="$PROJECT_DIR$/.idea/modules/junit-jupiter/beanie.junit-jupiter.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/junit-jupiter/beanie.junit-jupiter.test.iml" filepath="$PROJECT_DIR$/.idea/modules/junit-jupiter/beanie.junit-jupiter.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/junit-vintage/beanie.junit-vintage.iml" filepath="$PROJECT_DIR$/.idea/modules/junit-vintage/beanie.junit-vintage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/junit-vintage/beanie.junit-vintage.main.iml" filepath="$PROJECT_DIR$/.idea/modules/junit-vintage/beanie.junit-vintage.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/junit-vintage/beanie.junit-vintage.test.iml" filepath="$PROJECT_DIR$/.idea/modules/junit-vintage/beanie.junit-vintage.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie.main.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beanie.test.iml" filepath="$PROJECT_DIR$/.idea/modules/beanie.test.iml" />
+    </modules>
+  </component>
+</project>
