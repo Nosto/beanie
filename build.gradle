@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.nosto.beanie'
-version '3.2.0'
+version '3.2.0-SNAPSHOT-1725625158596'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -32,7 +32,10 @@ publishing {
         maven {
             name = "github"
             url = uri("https://maven.pkg.github.com/nosto/beanie")
-            credentials(PasswordCredentials)
+            credentials {
+                username = mavenUser
+                password = mavenPassword
+            }
         }
     }
     publications {
