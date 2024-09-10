@@ -30,8 +30,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 public abstract class JacksonBean {
 
-    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     @Override
+    @SuppressWarnings("EqualsDoesntCheckParameterClass")
     public final boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
     }

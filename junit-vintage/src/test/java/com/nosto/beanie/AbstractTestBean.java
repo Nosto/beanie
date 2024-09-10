@@ -19,8 +19,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  */
 public abstract class AbstractTestBean {
 
-    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     @Override
+    @SuppressWarnings("EqualsDoesntCheckParameterClass")
     public final boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
