@@ -7,7 +7,6 @@
  *  accordance with the terms of the agreement you entered into with
  *  Nosto Solutions Ltd.
  */
-
 package com.nosto.beanie;
 
 import org.junit.Test;
@@ -23,7 +22,6 @@ public class InvalidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonB
         super(TestBean.class);
     }
 
-    @SuppressWarnings("EmptyMethod")
     @Test(expected = AssertionError.class)
     @Override
     public void namingStrategy() {
@@ -35,6 +33,7 @@ public class InvalidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonB
         return new DefaultBeanieProvider();
     }
 
+    @SuppressWarnings("deprecation") // it's the point of the test, whether it's backwards compatible
     @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
     public static class TestBean extends AbstractTestBean {
 

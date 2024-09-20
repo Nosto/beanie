@@ -19,10 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
- * Test that the test suite catches issues where {@link JsonCreator}
- * property names do not match with the bean property names
- *
- * @author mridang
+ * Test that the test suite catches issues where {@link JsonCreator} property names do not match with the bean property names
  */
 public class NoNullCollectionsTest extends AbstractJacksonBeanTest<NoNullCollectionsTest.TestBean> {
 

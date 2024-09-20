@@ -7,7 +7,6 @@
  *  accordance with the terms of the agreement you entered into with
  *  Nosto Solutions Ltd.
  */
-
 package com.nosto.beanie;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -25,6 +24,7 @@ public class ValidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBea
         return new DefaultBeanieProvider();
     }
 
+    @SuppressWarnings("deprecation") // it's the point of the test, whether it's backwards compatible
     @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
     public static class TestBean extends AbstractTestBean {
 
@@ -33,9 +33,10 @@ public class ValidSnakeCasePropertyNamingStrategyTest extends AbstractJacksonBea
         private final String propertyC;
 
         @JsonCreator
-        public TestBean(@JsonProperty("property_a") String propertyA,
-                        @JsonProperty("some_property") String propertyB,
-                        @JsonProperty("_property_c") String propertyC) {
+        public TestBean(
+                @JsonProperty("property_a") String propertyA,
+                @JsonProperty("some_property") String propertyB,
+                @JsonProperty("_property_c") String propertyC) {
             this.propertyA = propertyA;
             this.propertyB = propertyB;
             this.propertyC = propertyC;

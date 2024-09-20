@@ -17,8 +17,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Test that the test suite catches issues where {@link JsonCreator}
- * property names do not match with the bean property names
+ * Test that the test suite catches issues where {@link JsonCreator} property names do not match with the bean property names
  */
 public class PrimitiveUnboxingGetterTest extends AbstractJacksonBeanTest<PrimitiveUnboxingGetterTest.TestBean> {
 

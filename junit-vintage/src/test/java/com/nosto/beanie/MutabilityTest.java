@@ -14,9 +14,6 @@ import org.junit.Test;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author ollik1
- */
 public class MutabilityTest extends AbstractJacksonBeanTest<MutabilityTest.MutableBean> {
 
     public MutabilityTest() {

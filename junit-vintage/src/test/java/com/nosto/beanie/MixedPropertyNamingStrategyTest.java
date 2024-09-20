@@ -14,9 +14,6 @@ import org.junit.Test;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author mridang
- */
 public class MixedPropertyNamingStrategyTest extends AbstractJacksonBeanTest<MixedPropertyNamingStrategyTest.TestBean> {
 
     public MixedPropertyNamingStrategyTest() {

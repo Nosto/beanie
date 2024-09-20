@@ -7,7 +7,6 @@
  *  accordance with the terms of the agreement you entered into with
  *  Nosto Solutions Ltd.
  */
-
 package com.nosto.beanie;
 
 import java.util.List;
@@ -40,27 +39,8 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
 
         @SuppressWarnings("unchecked")
         Class<PropertyNamingStrategy> configuredNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
-                .map(namingStrategy -> {
-                    if (namingStrategy.getClass().equals(LowerCamelCaseStrategy.class)) {
-                        return PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
-                    }
-                    if (namingStrategy.getClass().equals(UpperCamelCaseStrategy.class)) {
-                        return PropertyNamingStrategy.UPPER_CAMEL_CASE.getClass();
-                    }
-                    if (namingStrategy.getClass().equals(SnakeCaseStrategy.class)) {
-                        return PropertyNamingStrategy.SNAKE_CASE.getClass();
-                    }
-                    if (namingStrategy.getClass().equals(LowerCaseStrategy.class)) {
-                        return PropertyNamingStrategy.LOWER_CASE.getClass();
-                    }
-                    if (namingStrategy.getClass().equals(KebabCaseStrategy.class)) {
-                        return PropertyNamingStrategy.KEBAB_CASE.getClass();
-                    }
-                    if (namingStrategy.getClass().equals(LowerDotCaseStrategy.class)) {
-                        return PropertyNamingStrategy.LOWER_DOT_CASE.getClass();
-                    }
-                    return namingStrategy.getClass();
-                })
+                .map(Object::getClass)
+                .map(NamingStrategyTest::getNamingStrategy)
                 // Required to get around compilation error
                 .map(klass -> (Class<PropertyNamingStrategy>) klass)
                 .orElse(PropertyNamingStrategy.class);
@@ -68,28 +48,8 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
         @SuppressWarnings("unchecked")
         Class<PropertyNamingStrategy> beanPropertyNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
                 .map(JsonNaming::value)
+                .map(NamingStrategyTest::getNamingStrategy)
                 // Required to get around compilation error
-                .map(klass -> {
-                    if (klass.equals(LowerCamelCaseStrategy.class)) {
-                        return PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
-                    }
-                    if (klass.equals(UpperCamelCaseStrategy.class)) {
-                        return PropertyNamingStrategy.UPPER_CAMEL_CASE.getClass();
-                    }
-                    if (klass.equals(SnakeCaseStrategy.class)) {
-                        return PropertyNamingStrategy.SNAKE_CASE.getClass();
-                    }
-                    if (klass.equals(LowerCaseStrategy.class)) {
-                        return PropertyNamingStrategy.LOWER_CASE.getClass();
-                    }
-                    if (klass.equals(KebabCaseStrategy.class)) {
-                        return PropertyNamingStrategy.KEBAB_CASE.getClass();
-                    }
-                    if (klass.equals(LowerDotCaseStrategy.class)) {
-                        return PropertyNamingStrategy.LOWER_DOT_CASE.getClass();
-                    }
-                    return klass;
-                })
                 .map(s -> (Class<PropertyNamingStrategy>) s)
                 .orElse(configuredNamingStrategy);
 
@@ -118,5 +78,27 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
                 .orElseThrow(() -> new NoSuchElementException("No value present"));
 
         assertEquals(beanPropertyNamingStrategy, propertyNamingStrategy);
+    }
+
+    private static Class<?> getNamingStrategy(Class<?> namingStrategy) {
+        if (namingStrategy.equals(LowerCamelCaseStrategy.class)) {
+            return PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
+        }
+        if (namingStrategy.equals(UpperCamelCaseStrategy.class)) {
+            return PropertyNamingStrategy.UPPER_CAMEL_CASE.getClass();
+        }
+        if (namingStrategy.equals(SnakeCaseStrategy.class)) {
+            return PropertyNamingStrategy.SNAKE_CASE.getClass();
+        }
+        if (namingStrategy.equals(LowerCaseStrategy.class)) {
+            return PropertyNamingStrategy.LOWER_CASE.getClass();
+        }
+        if (namingStrategy.equals(KebabCaseStrategy.class)) {
+            return PropertyNamingStrategy.KEBAB_CASE.getClass();
+        }
+        if (namingStrategy.equals(LowerDotCaseStrategy.class)) {
+            return PropertyNamingStrategy.LOWER_DOT_CASE.getClass();
+        }
+        return namingStrategy;
     }
 }

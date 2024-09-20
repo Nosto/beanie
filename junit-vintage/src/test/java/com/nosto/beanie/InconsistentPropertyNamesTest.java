@@ -15,10 +15,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Test that the test suite catches issues where getter
- * returns different value than was given in constructor.
- *
- * @author ollik1
+ * Test that the test suite catches issues where getter returns different value than was given in constructor.
  */
 public class InconsistentPropertyNamesTest extends AbstractJacksonBeanTest<InconsistentPropertyNamesTest.TestBean> {
 

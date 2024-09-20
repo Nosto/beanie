@@ -84,9 +84,7 @@ public abstract class AbstractJacksonBeanTest<T> implements JupiterBeanieTest<T>
 
     @SuppressWarnings("unused")
     public static Stream<Class<? extends JacksonBean>> finalProperties() {
-        Reflections reflections = new Reflections(new ConfigurationBuilder()
-                .setUrls(ClasspathHelper.forPackage("com.nosto")));
-        return reflections.getSubTypesOf(JacksonBean.class).stream();
+        return getClasses();
     }
 
     /**

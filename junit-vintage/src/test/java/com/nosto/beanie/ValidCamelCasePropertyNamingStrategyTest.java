@@ -7,7 +7,6 @@
  *  accordance with the terms of the agreement you entered into with
  *  Nosto Solutions Ltd.
  */
-
 package com.nosto.beanie;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -30,9 +29,10 @@ public class ValidCamelCasePropertyNamingStrategyTest extends AbstractJacksonBea
         private final String foo;
 
         @JsonCreator
-        public TestBean(@JsonProperty("propertyA") String propertyA,
-                        @JsonProperty("someProperty") String propertyB,
-                        @JsonProperty("foo") String foo) {
+        public TestBean(
+                @JsonProperty("propertyA") String propertyA,
+                @JsonProperty("someProperty") String propertyB,
+                @JsonProperty("foo") String foo) {
             this.propertyA = propertyA;
             this.propertyB = propertyB;
             this.foo = foo;
