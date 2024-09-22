@@ -33,41 +33,34 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
         BeanDescription beanDescription = getDescription(concreteClass);
 
         @SuppressWarnings("unchecked")
-        Class<PropertyNamingStrategy> configuredNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
+        Optional<Class<? extends PropertyNamingStrategy>> maybeMapperNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
                 .map(Object::getClass)
-                .map(NamingStrategyTest::getNamingStrategy)
-                // Required to get around compilation error
-                .map(klass -> (Class<PropertyNamingStrategy>) klass)
-                .orElse(PropertyNamingStrategy.class);
+                .map(clazz -> (Class<? extends PropertyNamingStrategy>) clazz)
+                .map(NamingStrategyTest::getNamingStrategy);
+        Class<? extends PropertyNamingStrategy> configuredNamingStrategy = maybeMapperNamingStrategy.orElse(PropertyNamingStrategies.LowerCamelCaseStrategy.class);
 
-        @SuppressWarnings("unchecked")
-        Class<PropertyNamingStrategy> beanPropertyNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
+        Optional<Class<? extends PropertyNamingStrategy>> maybeAnnotationNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
                 .map(JsonNaming::value)
-                .map(NamingStrategyTest::getNamingStrategy)
-                // Required to get around compilation error
-                .map(klass -> (Class<PropertyNamingStrategy>) klass)
+                .map(NamingStrategyTest::getNamingStrategy);
+        Class<? extends PropertyNamingStrategy> beanPropertyNamingStrategy = maybeAnnotationNamingStrategy
                 .orElse(configuredNamingStrategy);
 
-        Map<Class<PropertyNamingStrategy>, List<String>> cases = beanDescription.findProperties()
+        Map<Class<? extends PropertyNamingStrategy>, List<String>> cases = beanDescription.findProperties()
                 .stream()
                 .map(BeanPropertyDefinition::getName)
                 .collect(Collectors.groupingBy(name -> {
                     if (name.contains("_") && name.toLowerCase().equals(name)) {
-                        // Required to get around compilation error
-                        //noinspection unchecked
-                        return (Class<PropertyNamingStrategy>) PropertyNamingStrategies.SNAKE_CASE.getClass();
+                        return PropertyNamingStrategies.SNAKE_CASE.getClass();
                     } else if (name.toLowerCase().equals(name)) {
                         // Could be snake case or camel case, so let's assume the class's naming strategy.
                         return beanPropertyNamingStrategy;
                     } else {
-                        // Required to get around compilation error
-                        //noinspection unchecked
-                        return (Class<PropertyNamingStrategy>) PropertyNamingStrategies.LOWER_CAMEL_CASE.getClass();
+                        return PropertyNamingStrategies.LOWER_CAMEL_CASE.getClass();
                     }
                 }));
         assertEquals(1, cases.size(), cases.toString());
 
-        Class<PropertyNamingStrategy> propertyNamingStrategy = cases.keySet()
+        Class<? extends PropertyNamingStrategy> propertyNamingStrategy = cases.keySet()
                 .stream()
                 .findAny()
                 .orElseThrow(() -> new NoSuchElementException("No value present"));
@@ -75,7 +68,7 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
         assertEquals(beanPropertyNamingStrategy, propertyNamingStrategy);
     }
 
-    private static Class<?> getNamingStrategy(Class<?> namingStrategy) {
+    private static Class<? extends PropertyNamingStrategy> getNamingStrategy(Class<? extends PropertyNamingStrategy> namingStrategy) {
         if (namingStrategy.equals(PropertyNamingStrategy.class)) {
             return PropertyNamingStrategies.LOWER_CAMEL_CASE.getClass();
         }
