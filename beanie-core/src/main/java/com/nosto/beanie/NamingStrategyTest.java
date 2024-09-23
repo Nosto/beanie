@@ -9,22 +9,17 @@
  */
 package com.nosto.beanie;
 
+import com.fasterxml.jackson.databind.BeanDescription;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
+
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.databind.BeanDescription;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies.KebabCaseStrategy;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies.LowerCamelCaseStrategy;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies.LowerCaseStrategy;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies.LowerDotCaseStrategy;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies.UpperCamelCaseStrategy;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
 
 public interface NamingStrategyTest<T> extends BeanieTest<T> {
 
@@ -37,42 +32,35 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
     default void testNamingStrategy(Class<? extends T> concreteClass) {
         BeanDescription beanDescription = getDescription(concreteClass);
 
-        @SuppressWarnings("unchecked")
-        Class<PropertyNamingStrategy> configuredNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
+        @SuppressWarnings({"unchecked", "rawtypes"})
+        Class<? extends PropertyNamingStrategy> configuredNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
                 .map(Object::getClass)
+                .map(clazz -> (Class<? extends PropertyNamingStrategy>) clazz)
                 .map(NamingStrategyTest::getNamingStrategy)
-                // Required to get around compilation error
-                .map(klass -> (Class<PropertyNamingStrategy>) klass)
-                .orElse(PropertyNamingStrategy.class);
+                .orElse((Class) PropertyNamingStrategies.LowerCamelCaseStrategy.class);
 
-        @SuppressWarnings("unchecked")
-        Class<PropertyNamingStrategy> beanPropertyNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
+        @SuppressWarnings({"unchecked", "rawtypes"})
+        Class<? extends PropertyNamingStrategy> beanPropertyNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
                 .map(JsonNaming::value)
                 .map(NamingStrategyTest::getNamingStrategy)
-                // Required to get around compilation error
-                .map(s -> (Class<PropertyNamingStrategy>) s)
-                .orElse(configuredNamingStrategy);
+                .orElse((Class)configuredNamingStrategy);
 
-        Map<Class<PropertyNamingStrategy>, List<String>> cases = beanDescription.findProperties()
+        Map<Class<? extends PropertyNamingStrategy>, List<String>> cases = beanDescription.findProperties()
                 .stream()
                 .map(BeanPropertyDefinition::getName)
                 .collect(Collectors.groupingBy(name -> {
                     if (name.contains("_") && name.toLowerCase().equals(name)) {
-                        // Required to get around compilation error
-                        //noinspection unchecked
-                        return (Class<PropertyNamingStrategy>) PropertyNamingStrategy.SNAKE_CASE.getClass();
+                        return PropertyNamingStrategies.SNAKE_CASE.getClass();
                     } else if (name.toLowerCase().equals(name)) {
                         // Could be snake case or camel case, so let's assume the class's naming strategy.
                         return beanPropertyNamingStrategy;
                     } else {
-                        // Required to get around compilation error
-                        //noinspection unchecked
-                        return (Class<PropertyNamingStrategy>) PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
+                        return PropertyNamingStrategies.LOWER_CAMEL_CASE.getClass();
                     }
                 }));
         assertEquals(1, cases.size(), cases.toString());
 
-        Class<PropertyNamingStrategy> propertyNamingStrategy = cases.keySet()
+        Class<? extends PropertyNamingStrategy> propertyNamingStrategy = cases.keySet()
                 .stream()
                 .findAny()
                 .orElseThrow(() -> new NoSuchElementException("No value present"));
@@ -80,24 +68,24 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
         assertEquals(beanPropertyNamingStrategy, propertyNamingStrategy);
     }
 
-    private static Class<?> getNamingStrategy(Class<?> namingStrategy) {
-        if (namingStrategy.equals(LowerCamelCaseStrategy.class)) {
-            return PropertyNamingStrategy.LOWER_CAMEL_CASE.getClass();
+    private static Class<? extends PropertyNamingStrategy> getNamingStrategy(Class<? extends PropertyNamingStrategy> namingStrategy) {
+        if (namingStrategy.equals(PropertyNamingStrategy.class)) {
+            return PropertyNamingStrategies.LOWER_CAMEL_CASE.getClass();
         }
-        if (namingStrategy.equals(UpperCamelCaseStrategy.class)) {
-            return PropertyNamingStrategy.UPPER_CAMEL_CASE.getClass();
+        if (namingStrategy.equals(PropertyNamingStrategy.UpperCamelCaseStrategy.class)) {
+            return PropertyNamingStrategies.UPPER_CAMEL_CASE.getClass();
         }
-        if (namingStrategy.equals(SnakeCaseStrategy.class)) {
-            return PropertyNamingStrategy.SNAKE_CASE.getClass();
+        if (namingStrategy.equals(PropertyNamingStrategy.SnakeCaseStrategy.class)) {
+            return PropertyNamingStrategies.SNAKE_CASE.getClass();
         }
-        if (namingStrategy.equals(LowerCaseStrategy.class)) {
-            return PropertyNamingStrategy.LOWER_CASE.getClass();
+        if (namingStrategy.equals(PropertyNamingStrategy.LowerCaseStrategy.class)) {
+            return PropertyNamingStrategies.LOWER_CASE.getClass();
         }
-        if (namingStrategy.equals(KebabCaseStrategy.class)) {
-            return PropertyNamingStrategy.KEBAB_CASE.getClass();
+        if (namingStrategy.equals(PropertyNamingStrategy.KebabCaseStrategy.class)) {
+            return PropertyNamingStrategies.KEBAB_CASE.getClass();
         }
-        if (namingStrategy.equals(LowerDotCaseStrategy.class)) {
-            return PropertyNamingStrategy.LOWER_DOT_CASE.getClass();
+        if (namingStrategy.equals(PropertyNamingStrategy.LowerDotCaseStrategy.class)) {
+            return PropertyNamingStrategies.LOWER_DOT_CASE.getClass();
         }
         return namingStrategy;
     }
