@@ -19,9 +19,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-/**
- * @author ollik1
- */
 public class PolymorphicJacksonBeanTest extends AbstractJacksonBeanTest<PolymorphicJacksonBeanTest.Concrete1> {
 
     public PolymorphicJacksonBeanTest() {

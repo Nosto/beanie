@@ -9,24 +9,15 @@
  */
 package com.nosto.beanie;
 
-import org.junit.Test;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-public class InvalidSnakeCasePropertyNamingStrategiesTest extends AbstractJacksonBeanTest<InvalidSnakeCasePropertyNamingStrategiesTest.TestBean> {
-
-    public InvalidSnakeCasePropertyNamingStrategiesTest() {
+public class ValidSnakeCasePropertyNamingStrategiesTest extends AbstractJacksonBeanTest<ValidSnakeCasePropertyNamingStrategiesTest.TestBean> {
+    public ValidSnakeCasePropertyNamingStrategiesTest() {
         super(TestBean.class);
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @Test(expected = AssertionError.class)
-    @Override
-    public void namingStrategy() {
-        super.namingStrategy();
     }
 
     @Override
@@ -39,11 +30,16 @@ public class InvalidSnakeCasePropertyNamingStrategiesTest extends AbstractJackso
 
         private final String propertyA;
         private final String propertyB;
+        private final String propertyC;
 
         @JsonCreator
-        public TestBean(@JsonProperty("propertyA") String propertyA, @JsonProperty("propertyB") String propertyB) {
+        public TestBean(
+                @JsonProperty("property_a") String propertyA,
+                @JsonProperty("some_property") String propertyB,
+                @JsonProperty("_property_c") String propertyC) {
             this.propertyA = propertyA;
             this.propertyB = propertyB;
+            this.propertyC = propertyC;
         }
 
         @SuppressWarnings("unused")
@@ -52,8 +48,14 @@ public class InvalidSnakeCasePropertyNamingStrategiesTest extends AbstractJackso
         }
 
         @SuppressWarnings("unused")
+        @JsonProperty("some_property")
         public String getPropertyB() {
             return propertyB;
+        }
+
+        @JsonProperty("_property_c")
+        public String getPropertyC() {
+            return propertyC;
         }
     }
 }

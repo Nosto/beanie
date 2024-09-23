@@ -7,7 +7,6 @@
  *  accordance with the terms of the agreement you entered into with
  *  Nosto Solutions Ltd.
  */
-
 package com.nosto.beanie;
 
 import org.jeasy.random.api.RandomizerRegistry;

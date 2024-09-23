@@ -22,10 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
- * Test that the test suite catches issues where {@link JsonCreator}
- * property names do not match with the bean property names
- *
- * @author ollik1
+ * Test that the test suite catches issues where {@link JsonCreator} property names do not match with the bean property names
  */
 public class ConstructorNullPointerTest implements JupiterBeanieTest<AbstractTestBean>
         , ConstructorParametersTest<AbstractTestBean> {

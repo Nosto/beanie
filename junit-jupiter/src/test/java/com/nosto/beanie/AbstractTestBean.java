@@ -14,13 +14,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-/**
- * @author ollik1
- */
 public abstract class AbstractTestBean {
 
-    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     @Override
+    @SuppressWarnings("EqualsDoesntCheckParameterClass")
     public final boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
