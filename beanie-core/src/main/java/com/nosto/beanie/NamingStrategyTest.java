@@ -32,18 +32,18 @@ public interface NamingStrategyTest<T> extends BeanieTest<T> {
     default void testNamingStrategy(Class<? extends T> concreteClass) {
         BeanDescription beanDescription = getDescription(concreteClass);
 
-        @SuppressWarnings("unchecked")
-        Optional<Class<? extends PropertyNamingStrategy>> maybeMapperNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
+        @SuppressWarnings({"unchecked", "rawtypes"})
+        Class<? extends PropertyNamingStrategy> configuredNamingStrategy = Optional.ofNullable(getMapper().getPropertyNamingStrategy())
                 .map(Object::getClass)
                 .map(clazz -> (Class<? extends PropertyNamingStrategy>) clazz)
-                .map(NamingStrategyTest::getNamingStrategy);
-        Class<? extends PropertyNamingStrategy> configuredNamingStrategy = maybeMapperNamingStrategy.orElse(PropertyNamingStrategies.LowerCamelCaseStrategy.class);
+                .map(NamingStrategyTest::getNamingStrategy)
+                .orElse((Class) PropertyNamingStrategies.LowerCamelCaseStrategy.class);
 
-        Optional<Class<? extends PropertyNamingStrategy>> maybeAnnotationNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
+        @SuppressWarnings({"unchecked", "rawtypes"})
+        Class<? extends PropertyNamingStrategy> beanPropertyNamingStrategy = Optional.ofNullable(beanDescription.getClassAnnotations().get(JsonNaming.class))
                 .map(JsonNaming::value)
-                .map(NamingStrategyTest::getNamingStrategy);
-        Class<? extends PropertyNamingStrategy> beanPropertyNamingStrategy = maybeAnnotationNamingStrategy
-                .orElse(configuredNamingStrategy);
+                .map(NamingStrategyTest::getNamingStrategy)
+                .orElse((Class)configuredNamingStrategy);
 
         Map<Class<? extends PropertyNamingStrategy>, List<String>> cases = beanDescription.findProperties()
                 .stream()
